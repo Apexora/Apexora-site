@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mapa — Apexora</title>
+<meta name="description" content="El mapa del continente de Apexora y sus naciones.">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img class="nav-logo-mark" src="assets/logo-96.png" alt="">
+      Apexora
+    </a>
+    <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="mitologia.html">Mitología</a></li>
+      <li><a href="mundo.html">Mundo</a></li>
+      <li><a href="mapa.html" class="active">Mapa</a></li>
+      <li><a href="linea-tiempo.html">Cronología</a></li>
+      <li><a href="personajes.html">Personajes</a></li>
+      <li><a href="historias.html">Historias</a></li>
+      <li><a href="dados.html">Dados</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="starfield" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="eyebrow">Geografía</p>
+    <h1>Mapa de Apexora</h1>
+    <p class="prose" style="margin-top:1.25rem;color:var(--ink-dim);font-size:1.15rem;">El continente quedó fracturado en naciones que representan visiones opuestas del mundo. Tocá o mirá cada nombre de la lista para saber qué se sabe de ese territorio.</p>
+    <nav class="toc" aria-label="Contenido de la página">
+      <a href="#antes-de-apexora">Antes de Apexora</a>
+      <a href="#oeste">Oeste</a>
+      <a href="#este">Este</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section style="padding-top:0;">
+  <div class="wrap">
+    <figure class="map-figure">
+      <img src="assets/mapa-apexora.jpg" alt="Mapa del continente de Apexora con sus naciones y territorios">
+    </figure>
+
+    <div class="panel" id="antes-de-apexora" style="margin-bottom:2.5rem;">
+      <p class="eyebrow">Antes de Apexora</p>
+      <h2 style="margin-top:0.5rem;">Unen y el Cataclismo</h2>
+      <div class="prose" style="margin-top:1.25rem;max-width:44rem;">
+        <p>Antes de llamarse Apexora, este continente era <strong>Unen</strong>, una civilización hermanada en el progreso. Un gran asteroide la fragmentó en lo que hoy se recuerda como <strong>el Cataclismo de Unen</strong> — el mismo suceso que, leído a través de la fe, se cuenta como la disputa entre Ape y Xora (ver <a href="mitologia.html" style="color:var(--gold-soft);">Mitología</a>).</p>
+        <p>La destrucción de las vías de comunicación dejó un mundo fragmentado: durante generaciones, quienes vivían de un lado del continente no supieron qué había sido de quienes vivían del otro, al punto de que algunos llegaron a dudar de que hubiera alguien más allá de las Montañas Skaldrak.</p>
+        <p class="dialogue" style="margin-top:1rem;">—Tuve hermanos que cruzaron las montañas para huir del ejército de Umbra. Sabemos que nada bueno les espera allí. Me he resignado. <span style="color:var(--ink-dim);">— Solaris, el Primero de Luminarae Luxor</span></p>
+      </div>
+    </div>
+
+    <h2 id="oeste" style="margin-bottom:1rem;">Oeste</h2>
+    <ul class="region-list">
+      <li><a class="r-name" href="mundo.html#nacion-luminarae">Luminarae Luxor</a><span class="r-status">Reino de Fe y Elevación</span></li>
+      <li><span class="r-name" style="color:var(--ink);">Arboris</span><span class="r-status">El bosque — hogar de las tribus, incluída Zudodh Ez</span></li>
+      <li><a class="r-name" href="mundo.html#nacion-negatt">Negatt</a><span class="r-status">La Sombra Sabia</span></li>
+      <li><span class="r-name" style="color:var(--ink);">Reino de Skaldrum</span><span class="r-status">Feudalismo grecorromano</span></li>
+      <li><span class="r-name" style="color:var(--ink);">Tribus Skaldrak</span><span class="r-status">Por explorar</span></li>
+      <li><a class="r-name" href="mundo.html#nacion-lumis">Lumis</a><span class="r-status">Ciudad de Sol y Cables</span></li>
+      <li><span class="r-name" style="color:var(--ink);">Boro</span><span class="r-status">El Refugio de los Restos</span></li>
+      <li><a class="r-name" href="mundo.html#nacion-umbra">Umbra</a><span class="r-status">El Imperio del Martillo</span></li>
+      <li><span class="r-name" style="color:var(--ink);">Markivton</span><span class="r-status">Nación de piratas y anarquía</span></li>
+    </ul>
+
+    <h2 id="este" style="margin:2.5rem 0 1rem;">Este</h2>
+    <ul class="region-list">
+      <li><a class="r-name" href="mundo.html#nacion-sinfalia">Sinfalía</a><span class="r-status">La nación de la alegría obligada — la localidad de Vasané-Nalú tomada por la Tribu Zzamua</span></li>
+      <li><a class="r-name" href="mundo.html#nacion-sylvaris">La Urdimbre de Sylvaris</a><span class="r-status">Necrocracia de mente colmena — de aquí partió la Tribu Zzamua</span></li>
+      <li><a class="r-name" href="mundo.html#nacion-krahn">El Presidio de Krahn</a><span class="r-status">Gerontocracia de silenciadores</span></li>
+      <li><a class="r-name" href="mundo.html#nacion-ostraca">La Ostraca</a><span class="r-status">Kakistocracia de clones cíclicos</span></li>
+      <li><span class="r-name" style="color:var(--ink);">Psybernia</span><span class="r-status">Por explorar — vecino oriental de Umbra, de donde llegó la Gran Inmigración</span></li>
+      <li><span class="r-name" style="color:var(--ink);">Pongí</span><span class="r-status">Por explorar</span></li>
+      <li><span class="r-name" style="color:var(--ink);">Disnjav</span><span class="r-status">Por explorar</span></li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>
+      <div class="f-title">Apexora</div>
+      <div>Un archivo vivo del lore del mundo.</div>
+    </div>
+    <ul class="roadmap">
+      <li>Mitología ✓</li>
+      <li>Mundo ✓</li>
+      <li>Personajes ✓</li>
+      <li>Más historias — en curso</li>
+    </ul>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

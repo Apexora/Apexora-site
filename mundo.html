@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Mundo — Apexora</title>
+<meta name="description" content="Naciones, razas y temas centrales de Apexora, el mundo fracturado por un cometa.">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img class="nav-logo-mark" src="assets/logo-96.png" alt="">
+      Apexora
+    </a>
+    <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="mitologia.html">Mitología</a></li>
+      <li><a href="mundo.html" class="active">Mundo</a></li>
+      <li><a href="mapa.html">Mapa</a></li>
+      <li><a href="linea-tiempo.html">Cronología</a></li>
+      <li><a href="personajes.html">Personajes</a></li>
+      <li><a href="historias.html">Historias</a></li>
+      <li><a href="dados.html">Dados</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="starfield" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="eyebrow">Crónicas del Mundo Fracturado</p>
+    <h1>El Mundo</h1>
+    <div class="prose" style="margin-top:1.25rem;color:var(--ink-dim);font-size:1.15rem;">
+      <p>Apexora no es un mundo… es una herida abierta.</p>
+      <p>Hace millones de años, un cometa impactó en el corazón del continente, desatando una serie de cataclismos que lo cambiaron todo: el cielo se volvió gris, los mares se encogieron, la magia se transformó en algo peligroso, y los humanos dejaron de ser humanos. Del cráter nacieron cosas dormidas, antiguas… vivas.</p>
+      <p>El impacto creó un mundo de extremos: glaciares eternos, desiertos tóxicos, volcanes negros y ciudades flotantes. La civilización se reconstruyó muchas veces, pero siempre sobre los restos de las anteriores. La historia es un rompecabezas enterrado en capas de ruinas, tecnologías olvidadas y mentiras religiosas.</p>
+      <p>Hoy, Apexora está dividido en regiones que representan visiones opuestas del mundo: tecnología contra fe, oscuridad contra orden, supervivencia contra dominación.</p>
+    </div>
+    <nav class="toc" aria-label="Contenido de la página">
+      <a href="#naciones">Naciones y Poderes</a>
+      <a href="#ordenes">Órdenes y Facciones</a>
+      <a href="#lugares">Lugares de Interés</a>
+      <a href="#bestias">Las Bestias Dormidas</a>
+      <a href="#razas">Razas del Mundo</a>
+      <a href="#temas">Temas Clave</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section id="naciones">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">01</p>
+      <h2>Naciones y Poderes</h2>
+      <p style="margin-top:1rem;color:var(--ink-dim);">Seis potencias, seis visiones distintas de cómo sobrevivir — o dominar — un mundo fracturado. Para verlas ubicadas en el continente, andá al <a href="mapa.html" style="color:var(--gold-soft);">Mapa</a>.</p>
+    </div>
+
+    <div class="nation-grid">
+
+      <article class="nation-card umbra-accent" id="nacion-boro">
+        <h3>Boro — El Refugio de los Restos</h3>
+        <dl>
+          <dt>Estética</dt><dd>Post-industrial, oscura, sucia.</dd>
+          <dt>Gobierno</dt><dd>Fragmentado. Mafias, clanes y resistencias.</dd>
+          <dt>Religión</dt><dd>Olvidada o sustituida por supersticiones callejeras.</dd>
+          <dt>Ambiente</dt><dd>Aire contaminado, estructuras colapsadas, luces rotas.</dd>
+          <dt>Facciones</dt><dd>Girax, Torzh, Sha'lok, Nokvar.</dd>
+        </dl>
+      </article>
+
+      <article class="nation-card umbra-accent" id="nacion-umbra">
+        <h3>Umbra — El Imperio del Martillo</h3>
+        <dl>
+          <dt>Estética</dt><dd>Brutalista, medieval con tintes militares.</dd>
+          <dt>Gobierno</dt><dd>Dictadura absoluta.</dd>
+          <dt>Religión</dt><dd>Ninguna oficial. Cree en el dominio del más fuerte.</dd>
+          <dt>Ambiente</dt><dd>Ciudades-fortaleza, campos devastados.</dd>
+          <dt>Líderes</dt><dd>Dictador Puj, General Reggina Markvon.</dd>
+        </dl>
+      </article>
+
+      <article class="nation-card umbra-accent" id="nacion-skaldrum">
+        <h3>Skaldrum — El Reino de Hierro y Honor</h3>
+        <dl>
+          <dt>Estética</dt><dd>Grecorromana con armamento avanzado.</dd>
+          <dt>Gobierno</dt><dd>Feudalismo extremo.</dd>
+          <dt>Religión</dt><dd>Ape, dios del dominio oscuro.</dd>
+          <dt>Ambiente</dt><dd>Arquitectura clásica + tecnología rústica.</dd>
+          <dt>Líderes</dt><dd>Oci (el inmortal), Santomachelo II.</dd>
+        </dl>
+      </article>
+
+      <article class="nation-card" id="nacion-luminarae">
+        <h3>Luminarae Luxor — Reino de Fe y Elevación</h3>
+        <dl>
+          <dt>Estética</dt><dd>Espiritual, majestuosa, luminosa pero inquietante.</dd>
+          <dt>Gobierno</dt><dd>Teocracia jerárquica.</dd>
+          <dt>Religión</dt><dd>Xora, diosa de la pureza espiritual.</dd>
+          <dt>Ambiente</dt><dd>Torres flotantes, templos suspendidos.</dd>
+          <dt>Líder</dt><dd>Reina Luminara IV.</dd>
+        </dl>
+      </article>
+
+      <article class="nation-card umbra-accent" id="nacion-negatt">
+        <h3>Negatt — La Sombra Sabia</h3>
+        <dl>
+          <dt>Estética</dt><dd>Oscura, elegante, grotesca.</dd>
+          <dt>Gobierno</dt><dd>Consejos oscuros.</dd>
+          <dt>Religión</dt><dd>Magia negra, pactos, inmortalidad.</dd>
+          <dt>Ambiente</dt><dd>Bibliotecas ruinosas, palacios corruptos.</dd>
+          <dt>Líder</dt><dd>Raulo Casa III.</dd>
+        </dl>
+      </article>
+
+      <article class="nation-card" id="nacion-lumis">
+        <h3>Lumis — Ciudad de Sol y Cables</h3>
+        <dl>
+          <dt>Estética</dt><dd>Neofuturista, limpia, vertical.</dd>
+          <dt>Gobierno</dt><dd>Tecnocracia controlada por la IA Inargo.</dd>
+          <dt>Religión</dt><dd>Ninguna. Ciencia y razón.</dd>
+          <dt>Ambiente</dt><dd>Torres solares, drones, redes de datos.</dd>
+          <dt>Habitantes</dt><dd>Humanos, androides, robots.</dd>
+        </dl>
+      </article>
+
+      <article class="nation-card" id="nacion-sinfalia">
+        <h3>Sinfalía — La Nación de la Alegría Obligada</h3>
+        <dl>
+          <dt>Etimología</dt><dd><em>Sin-</em> (armonía/unión) + <em>-lía</em> (fluidez): "la vida fluye mejor cuando se recibe al otro con alegría".</dd>
+          <dt>Gobierno</dt><dd>Ciudades-estado anárquicas — cada pueblo se gobierna a sí mismo, sin jerarquías internas. El Consejo de los Jóvenes reúne a los hijos de los fundadores.</dd>
+          <dt>Economía</dt><dd>Sin dinero: todo se rige por <strong>dones</strong>, favores adeudados de valor acordado entre las partes.</dd>
+          <dt>Religión</dt><dd>Ganore, dios de la Nada, venerado como guía y consejero.</dd>
+          <dt>Facciones</dt><dd>Moradores, Sobrios, Ganoristas.</dd>
+          <dt>Estado actual</dt><dd>La localidad de Vasané-Nalú, tomada por la Tribu Zzamua, de La Urdimbre de Sylvaris.</dd>
+        </dl>
+        <div class="prose" style="margin-top:1rem;">
+          <p>Fundada por los <strong>vínicos</strong>, nómades llegados desde el oeste huyendo de los conflictos que dejó el asteroide, Sinfalía promulgó la felicidad como actitud de supervivencia — hasta que, como todo remedio en exceso, se volvió un cristal para filtrar la realidad. Si un sinfaliense te ve con cara larga, se asusta; lo más probable es que te citen frente a una asamblea, porque aborrecen la violencia física.</p>
+          <p>Cada pueblo guarda, además, un fragmento del asteroide que fundó la nación, depositado allí por los primeros vínicos: una protección mágica en un mundo inestable.</p>
+        </div>
+
+        <div class="lore-table-scroll">
+        <table class="lore-table">
+          <caption>Los once pueblos de Sinfalía</caption>
+          <thead><tr><th>Pueblo</th><th>Hab.</th><th>Especialidad</th><th>Escuela</th></tr></thead>
+          <tbody>
+            <tr><td>Anamé</td><td>520</td><td>Nexo comercial en bosque templado</td><td>Leyes y Comercio</td></tr>
+            <tr><td>Naluvia</td><td>450</td><td>Astilleros en playas de basalto</td><td>Elemental</td></tr>
+            <tr><td>Silévula</td><td>380</td><td>Viñedos curativos en colinas fértiles</td><td>Letras y Sabiduría</td></tr>
+            <tr><td>Fuana</td><td>215</td><td>Forjas térmicas en zona volcánica</td><td>Metalurgia y el Fuego</td></tr>
+            <tr><td>Lunalú</td><td>180</td><td>Recolectores de perlas en manglares</td><td>Defensa</td></tr>
+            <tr><td>Shalá</td><td>160</td><td>Criadores de monturas en las praderas</td><td>Travesía y Supervivencia</td></tr>
+            <tr><td>Inasuno</td><td>125</td><td>Alquimia de la sal en la costa</td><td>Ganore</td></tr>
+            <tr><td>Malina</td><td>95</td><td>Tejedores en los acantilados</td><td>Historia y Cultura</td></tr>
+            <tr><td>Vasamala</td><td>70</td><td>Alerta sismológica y fronteriza en el norte</td><td>Combate</td></tr>
+            <tr><td>Vasané-Nalú</td><td>60</td><td>El Gran Faro en los acantilados hexagonales</td><td>Navegación</td></tr>
+            <tr><td>Suminé</td><td>55</td><td>Monasterios en la estepa alta</td><td>Artes Astronómicas</td></tr>
+          </tbody>
+        </table>
+        </div>
+
+        <div class="prose" style="margin-top:1.25rem;">
+          <p>Tres facciones se disputan el rumbo del país: los <strong>Moradores</strong>, que sueñan con llevar la felicidad a toda Apexora; los <strong>Sobrios</strong>, que creen que la gente debería poder sentir algo más que felicidad forzada; y los <strong>Ganoristas</strong>, que quieren llevar a Ganore a la vida de todos — a veces por métodos extremos. Ver la <a href="#religion-ganore" style="color:var(--gold-soft);">devoción a Ganore</a> más abajo.</p>
+          <p><strong>Estado actual:</strong> la localidad de Vasané-Nalú fue entregada a la Tribu Zzamua, llegada desde La Urdimbre de Sylvaris — los "ma-ka-diés", que habían perdido su hogar allí por culpa de la mente colmena que gobierna esa tierra y tomaron Vasané-Nalú como último recurso, aconsejados por piratas. Fue la secta sobria conocida como <em>Día del Juicio a los Ignorantes</em> la que los incentivó a invadir esa localidad, su gente y sus recursos, a cambio de someter a los Moradores. Ver <a href="historias.html#juicio-inasuno" style="color:var(--gold-soft);">El Juicio de Inasuno</a> para uno de los primeros casos bajo el nuevo régimen.</p>
+        </div>
+      </article>
+
+      <article class="nation-card umbra-accent" id="nacion-krahn">
+        <h3>El Presidio de Krahn</h3>
+        <dl>
+          <dt>Gobierno</dt><dd>Gerontocracia de silenciadores.</dd>
+          <dt>Frontera con</dt><dd>Sinfalía (oeste) y Psybernia.</dd>
+        </dl>
+        <div class="prose" style="margin-top:1rem;">
+          <p>Custodia el estrecho con anclas de antimagia, buscando la "Estática Total" para frenar a Psybernia — pero su rigidez tradicionalista los encadena a una vigilancia eterna que depende del acero externo para no colapsar.</p>
+        </div>
+      </article>
+
+      <article class="nation-card umbra-accent" id="nacion-sylvaris">
+        <h3>La Urdimbre de Sylvaris</h3>
+        <dl>
+          <dt>Gobierno</dt><dd>Necrocracia timocrática — ancestros incorpóreos dirigen una mente colmena vegetal.</dd>
+          <dt>Frontera con</dt><dd>Sinfalía (este).</dd>
+        </dl>
+        <div class="prose" style="margin-top:1rem;">
+          <p>Obsesionada con el honor y la asimilación total, su anhelo de expansión se estrella contra las cenizas de Sinfalía — el único veneno capaz de quemar su conexión espiritual. De aquí partió la Tribu Zzamua, expulsada por la propia colmena que gobierna esta tierra.</p>
+        </div>
+      </article>
+
+      <article class="nation-card" id="nacion-ostraca">
+        <h3>Ostraca</h3>
+        <dl>
+          <dt>Gobierno</dt><dd>Kakistocracia de clones cíclicos.</dd>
+          <dt>Frontera con</dt><dd>Sinfalía (norte).</dd>
+        </dl>
+        <div class="prose" style="margin-top:1rem;">
+          <p>Habita un desierto de coral y sal. Bajo su fachada de quietismo sagrado late una incompetencia sistémica: sus líderes olvidan sus propias reglas, algo que el resto de Sinfalía todavía intenta comprender.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="ordenes">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">01.5</p>
+      <h2>Órdenes y Facciones</h2>
+      <p style="margin-top:1rem;color:var(--ink-dim);">Por debajo de las naciones oficiales operan órdenes con agenda propia, a veces al servicio del trono que dicen proteger — a veces no.</p>
+    </div>
+
+    <div class="nation-grid">
+      <article class="nation-card" id="orden-ocl">
+        <h3>La Orden de los Caballeros de Luxor (OCL)</h3>
+        <dl>
+          <dt>Objetivo</dt><dd>Proteger y llevar a Luxor a su potencial máximo, actuando desde las sombras.</dd>
+          <dt>Métodos</dt><dd>Sigilo, infiltración, y una moral que se retuerce a conveniencia del Consejo.</dd>
+          <dt>Estructura</dt><dd>Reclutas → Activos → Asientos (en Círculos numerados o especializados) → los Tres Círculos → el Consejo, anónimo y por encima de todos.</dd>
+          <dt>Ascensión</dt><dd>Un Activo puede ascender a un Círculo por mérito, recomendación o mandato del Consejo — y elegir un nuevo apellido como marca de su nuevo estado.</dd>
+          <dt>Misión actual</dt><dd><strong>Operación Negro:</strong> desestabilizar Umbra para dejarla vulnerable a una invasión de Luxor, adueñarse de sus recursos, y secuestrar infantes umbrianos para adoctrinarlos como una nueva generación de activos — el programa conocido como <em>Los Niños de la Luminaria</em>.</dd>
+        </dl>
+        <div class="prose" style="margin-top:1.25rem;">
+          <p>El Consejo se cree ocupado por antiguos asientos de los Tres Círculos, sabios de la orden, personas importantes de Luxor y dirigentes de la ciudad — aunque todo esto no pasa de ser especulación, incluso entre los propios miembros de la OCL. Es la mayor autoridad de la organización: diseña las misiones, decide quién entra, y quién merece la Ascensión.</p>
+          <p>Ver a <a href="personajes.html#personaje-andreas" style="color:var(--gold-soft);">Andreas Light</a>, el operativo detrás de la Operación Negro, en Personajes.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="lugares">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">01.7</p>
+      <h2>Lugares de Interés</h2>
+      <p style="margin-top:1rem;color:var(--ink-dim);">Puntos del mapa que merecen su propia ficha, más allá de las fronteras nacionales.</p>
+    </div>
+
+    <div class="panel" style="display:flex;gap:2rem;align-items:flex-start;flex-wrap:wrap;">
+      <svg viewBox="0 0 100 100" width="84" height="84" style="flex:none;" aria-hidden="true">
+        <circle cx="50" cy="50" r="46" fill="none" stroke="#cf9d4f" stroke-opacity="0.25" stroke-dasharray="2 7"/>
+        <circle cx="50" cy="50" r="30" fill="none" stroke="#e8c789" stroke-opacity="0.5"/>
+        <path d="M32 66 L50 34 L68 66 Z" fill="none" stroke="#ece6d8" stroke-width="1.5"/>
+        <line x1="38" y1="66" x2="38" y2="52" stroke="#ece6d8" stroke-width="1.2"/>
+        <line x1="50" y1="66" x2="50" y2="46" stroke="#ece6d8" stroke-width="1.2"/>
+        <line x1="62" y1="66" x2="62" y2="52" stroke="#ece6d8" stroke-width="1.2"/>
+        <circle cx="50" cy="50" r="3.5" fill="#cf9d4f"/>
+      </svg>
+      <div>
+        <p class="eyebrow">Templo en ruinas · Boro</p>
+        <h3 style="margin-top:0.3rem;">Tharnok</h3>
+        <div class="prose" style="margin-top:0.75rem;">
+          <p>En este templo se han desarrollado, durante décadas, adoraciones a la diosa Xora. Un peregrino reportó recientemente que el lugar expulsó un pulso electromagnético muy potente.</p>
+          <p>En esta región de Apexora se cree que se contacta con la <strong>"dimensión méltida"</strong> mediante dispositivos electrónicos y ciertos métodos muy específicos. El templo es, en sí mismo, una restauración de ruinas antiguas de origen desconocido — con un puesto de turismo instalado junto a la entrada. Otra atracción común de la zona es el <strong>agua de saje</strong>, que se dice conecta más a quien la consume con la dimensión méltida.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="bestias">
+  <div class="wrap">
+    <div class="panel">
+      <p class="eyebrow">Entidades primordiales</p>
+      <h2 style="margin-top:0.5rem;">Las Bestias Dormidas</h2>
+      <p style="margin-top:1.25rem;max-width:42rem;">Son entidades primordiales enterradas desde el cataclismo. Dormidas en glaciares, volcanes o cuevas, son armas vivientes que las grandes naciones desean controlar.</p>
+      <p style="margin-top:0.75rem;max-width:42rem;color:var(--ink-dim);">En Negatt, un investigador llamado Tsuji demostró que un espíritu de bestia puede imponerse por la fuerza en un cuerpo humano — dando origen a <a href="personajes.html#ocho-negatt" style="color:var(--gold-soft);">los Ocho de Negatt</a>, sus propios hijos-experimento.</p>
+    </div>
+  </div>
+</section>
+
+<section id="razas">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">02</p>
+      <h2>Razas del Mundo</h2>
+    </div>
+    <div class="chip-row">
+      <span class="chip"><strong>Humanos</strong> modificados</span>
+      <span class="chip"><strong>SkaNuj</strong> — adaptados al frío extremo</span>
+      <span class="chip"><strong>Orcos y Semi-Orcos</strong> — mutaciones post-cataclismo</span>
+      <span class="chip"><strong>Lutech</strong> — tecnología integrada</span>
+      <span class="chip"><strong>Elfos Negatt</strong> — alterados por magia negra</span>
+      <span class="chip"><strong>Ska'O</strong> — mezcla de orco y SkaNuj</span>
+    </div>
+  </div>
+</section>
+
+<section id="temas">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">03</p>
+      <h2>Temas Clave</h2>
+    </div>
+    <div class="prose" style="max-width:38rem;">
+      <p style="font-family:var(--f-display);font-size:1.15rem;color:var(--ink);line-height:1.6;">¿Qué es el bien en un mundo podrido?<br>¿Sobrevivir o conservar la identidad?<br>¿Tecnología: salvación o ruina?<br>¿Qué precio tiene el poder espiritual?<br>¿Y si el cataclismo fue una advertencia ignorada?</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>
+      <div class="f-title">Apexora</div>
+      <div>Un archivo vivo del lore del mundo.</div>
+    </div>
+    <ul class="roadmap">
+      <li>Mitología ✓</li>
+      <li>Mundo ✓</li>
+      <li>Personajes ✓</li>
+      <li>Más historias — en curso</li>
+    </ul>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tirar Dados — Apexora</title>
+<meta name="description" content="Tirador de dados estilo D&D para las campañas de Apexora: d4 a d100, ventaja/desventaja e historial.">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img class="nav-logo-mark" src="assets/logo-96.png" alt="">
+      Apexora
+    </a>
+    <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="mitologia.html">Mitología</a></li>
+      <li><a href="mundo.html">Mundo</a></li>
+      <li><a href="mapa.html">Mapa</a></li>
+      <li><a href="linea-tiempo.html">Cronología</a></li>
+      <li><a href="personajes.html">Personajes</a></li>
+      <li><a href="historias.html">Historias</a></li>
+      <li><a href="dados.html" class="active">Dados</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="starfield" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="eyebrow">Herramientas de mesa</p>
+    <h1>Tirar Dados</h1>
+    <p class="prose" style="margin-top:1.25rem;color:var(--ink-dim);font-size:1.15rem;">Elegí el dado, la cantidad y el modificador. Para el d20 hay ventaja y desventaja, igual que en mesa.</p>
+    <nav class="toc" aria-label="Contenido de la página">
+      <a href="#tirador">El Tirador</a>
+      <a href="#historial">Historial</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section id="tirador" style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">01</p>
+      <h2>Elegí tu dado</h2>
+    </div>
+
+    <div class="dice-grid" id="dice-grid">
+      <button type="button" class="die-btn" data-die="4">d4</button>
+      <button type="button" class="die-btn" data-die="6">d6</button>
+      <button type="button" class="die-btn" data-die="8">d8</button>
+      <button type="button" class="die-btn" data-die="10">d10</button>
+      <button type="button" class="die-btn" data-die="12">d12</button>
+      <button type="button" class="die-btn active" data-die="20">d20</button>
+      <button type="button" class="die-btn" data-die="100">d100</button>
+    </div>
+
+    <div class="roll-controls panel">
+      <div class="roll-field">
+        <label for="qty">Cantidad</label>
+        <div class="stepper">
+          <button type="button" id="qty-minus" aria-label="Restar dado">&minus;</button>
+          <input type="number" id="qty" value="1" min="1" max="20" inputmode="numeric">
+          <button type="button" id="qty-plus" aria-label="Sumar dado">+</button>
+        </div>
+      </div>
+
+      <div class="roll-field">
+        <label for="mod">Modificador</label>
+        <div class="stepper">
+          <button type="button" id="mod-minus" aria-label="Restar modificador">&minus;</button>
+          <input type="number" id="mod" value="0" inputmode="numeric">
+          <button type="button" id="mod-plus" aria-label="Sumar modificador">+</button>
+        </div>
+      </div>
+
+      <div class="roll-field" id="adv-field">
+        <label>Solo d20</label>
+        <div class="adv-toggle">
+          <button type="button" class="adv-btn" data-mode="advantage">Ventaja</button>
+          <button type="button" class="adv-btn" data-mode="disadvantage">Desventaja</button>
+        </div>
+      </div>
+    </div>
+
+    <button type="button" class="btn btn-primary roll-btn" id="roll-btn">Tirar</button>
+
+    <div class="roll-result panel" id="roll-result" aria-live="polite">
+      <p class="hint">Elegí un dado y tocá "Tirar".</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="historial">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">02</p>
+      <h2>Historial</h2>
+      <p style="margin-top:1rem;color:var(--ink-dim);">Las últimas 20 tiradas de esta sesión. Se pierden al recargar la página.</p>
+    </div>
+    <ul class="roll-history" id="roll-history">
+      <li class="hint" style="border:none;">Todavía no tiraste ningún dado.</li>
+    </ul>
+    <button type="button" class="btn btn-ghost" id="clear-history" style="margin-top:1.5rem;">Limpiar historial</button>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>
+      <div class="f-title">Apexora</div>
+      <div>Un archivo vivo del lore del mundo.</div>
+    </div>
+    <ul class="roadmap">
+      <li>Mitología ✓</li>
+      <li>Mundo ✓</li>
+      <li>Personajes ✓</li>
+      <li>Dados ✓</li>
+    </ul>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/dice.js"></script>
+</body>
+</html>
