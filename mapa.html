@@ -47,9 +47,21 @@
 <main>
 <section style="padding-top:0;">
   <div class="wrap">
-    <figure class="map-figure">
-      <img src="assets/mapa-apexora.jpg" alt="Mapa del continente de Apexora con sus naciones y territorios">
-    </figure>
+    <div class="map3d-shell">
+      <div class="map3d-viewport" id="map3d-viewport" aria-label="Mapa interactivo de Apexora en 3D"></div>
+      <p class="map3d-hint">Arrastrá para mirar alrededor · rueda o pellizcá para acercar · tocá un punto de luz para ver la nación.</p>
+    </div>
+
+    <div class="map-info-backdrop" id="map-info-backdrop" hidden>
+      <div class="map-info-panel panel" id="map-info-panel" role="dialog" aria-modal="true" aria-labelledby="map-info-title">
+        <button type="button" class="map-info-close" id="map-info-close" aria-label="Cerrar">&times;</button>
+        <p class="eyebrow" id="map-info-tagline"></p>
+        <h2 id="map-info-title"></h2>
+        <dl class="map-info-facts" id="map-info-facts"></dl>
+        <p id="map-info-desc" style="margin-top:1rem;color:var(--ink-dim);"></p>
+        <a class="btn btn-ghost" id="map-info-link" style="margin-top:1.5rem;">Ver ficha completa</a>
+      </div>
+    </div>
 
     <div class="panel" id="antes-de-apexora" style="margin-bottom:2.5rem;">
       <p class="eyebrow">Antes de Apexora</p>
@@ -80,9 +92,9 @@
       <li><a class="r-name" href="mundo.html#nacion-sylvaris">La Urdimbre de Sylvaris</a><span class="r-status">Necrocracia de mente colmena — de aquí partió la Tribu Zzamua</span></li>
       <li><a class="r-name" href="mundo.html#nacion-krahn">El Presidio de Krahn</a><span class="r-status">Gerontocracia de silenciadores</span></li>
       <li><a class="r-name" href="mundo.html#nacion-ostraca">La Ostraca</a><span class="r-status">Kakistocracia de clones cíclicos</span></li>
-      <li><span class="r-name" style="color:var(--ink);">Psybernia</span><span class="r-status">Por explorar — vecino oriental de Umbra, de donde llegó la Gran Inmigración</span></li>
-      <li><span class="r-name" style="color:var(--ink);">Pongí</span><span class="r-status">Por explorar</span></li>
-      <li><span class="r-name" style="color:var(--ink);">Disnjav</span><span class="r-status">Por explorar</span></li>
+      <li><a class="r-name" href="mundo.html#nacion-psybernia">Psybernia</a><span class="r-status">Macabra y secreta — se experimenta con seres vivos</span></li>
+      <li><a class="r-name" href="mundo.html#nacion-pongi">Pongí</a><span class="r-status">Un lugar divertido</span></li>
+      <li><a class="r-name" href="mundo.html#nacion-disnjav">Disnjav</a><span class="r-status">Asociada a lo tóxico</span></li>
     </ul>
   </div>
 </section>
@@ -103,6 +115,11 @@
   </div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="js/main.js"></script>
+<script src="js/mapa-data.js"></script>
+<script src="js/mapa-sonidos.js"></script>
+<script src="js/mapa3d.js"></script>
+<script src="js/mapa.js"></script>
 </body>
 </html>
