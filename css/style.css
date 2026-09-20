@@ -4,7 +4,7 @@
    Dualidad Ape (entropía/oscuridad) vs Xora (orden/luz)
    ========================================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap');
 
 :root {
   /* Color */
@@ -23,6 +23,7 @@
 
   /* Type */
   --f-display: 'Cinzel', 'Iowan Old Style', serif;
+  --f-deco: 'Cinzel Decorative', 'Cinzel', 'Iowan Old Style', serif;
   --f-body: 'EB Garamond', 'Iowan Old Style', Georgia, serif;
 
   /* Layout */
@@ -49,6 +50,26 @@ body {
   font-size: 1.125rem;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22180%22%20height%3D%22180%22%3E%3Cfilter%20id%3D%22n%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%220.8%22%20numOctaves%3D%222%22%20stitchTiles%3D%22stitch%22/%3E%3CfeColorMatrix%20type%3D%22matrix%22%20values%3D%220%200%200%200%201%20%200%200%200%200%201%20%200%200%200%200%201%20%200%200%200%200.06%200%22/%3E%3C/filter%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20filter%3D%22url%28%23n%29%22/%3E%3C/svg%3E");
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(ellipse at 50% 40%, transparent 45%, rgba(0,0,0,0.5) 100%);
 }
 
 img { max-width: 100%; display: block; }
@@ -116,8 +137,23 @@ section {
 .divider {
   border: none;
   height: 1px;
-  background: var(--line);
   margin: 0;
+  position: relative;
+  background: linear-gradient(90deg, transparent, var(--line-strong) 22%, var(--gold-soft) 50%, var(--line-strong) 78%, transparent);
+  opacity: 0.6;
+}
+
+.divider::after {
+  content: "◆";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--bg);
+  color: var(--gold-soft);
+  font-size: 0.65rem;
+  line-height: 1;
+  padding: 0 1rem;
 }
 
 /* ---------- starfield background ---------- */
@@ -168,6 +204,7 @@ section {
   background: rgba(8, 7, 13, 0.72);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
+  border-image: linear-gradient(90deg, transparent, var(--gold-soft) 50%, transparent) 1;
 }
 
 .nav-inner {
@@ -318,6 +355,9 @@ section {
 .hero h1 {
   opacity: 0;
   animation: rise 1s ease 0.35s forwards;
+  font-family: var(--f-deco);
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 40px rgba(207, 157, 79, 0.35);
 }
 
 .hero .tagline {
@@ -360,9 +400,9 @@ section {
   font-size: 0.95rem;
   letter-spacing: 0.02em;
   text-decoration: none;
-  padding: 0.85rem 1.9rem;
-  border-radius: 2px;
-  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  padding: 0.85rem 2.1rem;
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, filter 0.2s ease;
 }
 
 .btn-primary {
@@ -370,7 +410,7 @@ section {
   color: #14100a;
 }
 
-.btn-primary:hover { transform: translateY(-2px); }
+.btn-primary:hover { transform: translateY(-2px); filter: brightness(1.08); }
 
 .btn-ghost {
   border: 1px solid var(--line-strong);
@@ -542,8 +582,34 @@ section {
 
 /* ---------- feature panel (Espacio) ---------- */
 
+.panel,
+.nation-card,
+.char-card {
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-image:
+    linear-gradient(var(--gold-soft), var(--gold-soft)),
+    linear-gradient(var(--gold-soft), var(--gold-soft)),
+    linear-gradient(var(--gold-soft), var(--gold-soft)),
+    linear-gradient(var(--gold-soft), var(--gold-soft)),
+    linear-gradient(var(--gold-soft), var(--gold-soft)),
+    linear-gradient(var(--gold-soft), var(--gold-soft)),
+    linear-gradient(var(--gold-soft), var(--gold-soft)),
+    linear-gradient(var(--gold-soft), var(--gold-soft));
+  background-position:
+    top left, top left,
+    top right, top right,
+    bottom left, bottom left,
+    bottom right, bottom right;
+  background-size:
+    16px 2px, 2px 16px,
+    16px 2px, 2px 16px,
+    16px 2px, 2px 16px,
+    16px 2px, 2px 16px;
+}
+
 .panel {
-  background: var(--bg-elev);
+  background-color: var(--bg-elev);
   border: 1px solid var(--line);
   padding: clamp(2rem, 5vw, 4rem);
   border-radius: 3px;
@@ -671,7 +737,7 @@ footer {
 }
 
 .nation-card {
-  background: var(--bg-elev);
+  background-color: var(--bg-elev);
   border: 1px solid var(--line);
   border-top: 2px solid var(--gold-soft);
   padding: 1.75rem 1.85rem;
@@ -868,7 +934,7 @@ footer {
 }
 
 .char-card {
-  background: var(--bg-elev);
+  background-color: var(--bg-elev);
   border: 1px solid var(--line);
   padding: 1.6rem 1.5rem;
   display: flex;
@@ -975,6 +1041,32 @@ footer {
 }
 
 /* ---------- dice roller ---------- */
+
+.dice-viewport {
+  width: 100%;
+  height: 240px;
+  margin-bottom: 1.25rem;
+  border: 1px solid var(--line);
+  background: radial-gradient(ellipse at center, rgba(207,157,79,0.1), transparent 72%);
+  position: relative;
+  overflow: hidden;
+}
+
+.dice-viewport canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.dice-viewport.no-webgl { display: none; }
+
+.roll-btn.is-rolling { opacity: 0.65; cursor: wait; }
+
+.stepper input:disabled { opacity: 0.4; }
+
+@media (max-width: 560px) {
+  .dice-viewport { height: 190px; }
+}
 
 .dice-grid {
   display: grid;

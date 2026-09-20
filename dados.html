@@ -35,7 +35,7 @@
   <div class="wrap">
     <p class="eyebrow">Herramientas de mesa</p>
     <h1>Tirar Dados</h1>
-    <p class="prose" style="margin-top:1.25rem;color:var(--ink-dim);font-size:1.15rem;">Elegí el dado, la cantidad y el modificador. Para el d20 hay ventaja y desventaja, igual que en mesa.</p>
+    <p class="prose" style="margin-top:1.25rem;color:var(--ink-dim);font-size:1.15rem;">Elegí el dado, la cantidad y el modificador. Ventaja y desventaja funcionan con cualquier dado, no solo el d20. Los dados se tiran en 3D, como en mesa.</p>
     <nav class="toc" aria-label="Contenido de la página">
       <a href="#tirador">El Tirador</a>
       <a href="#historial">Historial</a>
@@ -82,7 +82,7 @@
       </div>
 
       <div class="roll-field" id="adv-field">
-        <label>Solo d20</label>
+        <label>Ventaja / Desventaja</label>
         <div class="adv-toggle">
           <button type="button" class="adv-btn" data-mode="advantage">Ventaja</button>
           <button type="button" class="adv-btn" data-mode="disadvantage">Desventaja</button>
@@ -93,7 +93,10 @@
     <button type="button" class="btn btn-primary roll-btn" id="roll-btn">Tirar</button>
 
     <div class="roll-result panel" id="roll-result" aria-live="polite">
-      <p class="hint">Elegí un dado y tocá "Tirar".</p>
+      <div class="dice-viewport" id="dice-viewport"></div>
+      <div id="roll-result-text">
+        <p class="hint">Elegí un dado y tocá "Tirar".</p>
+      </div>
     </div>
   </div>
 </section>
@@ -131,7 +134,9 @@
   </div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="js/main.js"></script>
+<script src="js/dice3d.js"></script>
 <script src="js/dice.js"></script>
 </body>
 </html>
