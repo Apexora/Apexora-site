@@ -1468,6 +1468,10 @@ footer {
   .nav-search-kbd { display: none; }
 }
 
+.search-overlay[hidden] {
+  display: none;
+}
+
 .search-overlay {
   position: fixed;
   inset: 0;
