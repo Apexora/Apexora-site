@@ -8,11 +8,11 @@ Sitio estático (HTML + CSS + JS puro, sin frameworks ni build) para documentar 
 apexora-site/
 ├── index.html            → portada
 ├── mitologia.html         → Mitología y Teogonía (Espacio y sus diez hijos)
-├── mundo.html             → naciones, órdenes, lugares de interés, razas y temas clave
+├── mundo.html             → naciones (con Tharnok dentro de Boro), órdenes, bestias dormidas y razas
 ├── mapa.html              → mapa interactivo del continente (hover, click, sonido)
 ├── linea-tiempo.html      → cronología de eventos clave
 ├── personajes.html        → Guardianes de Apexora, linajes, Sinfalía, Ocho de Negatt, OCL
-├── historias.html         → relatos completos y el índice de campañas y arcos
+├── historias.html         → relatos completos (incluye El Linaje de Zarick) y el índice de campañas y arcos
 ├── dados.html             → tirador de dados estilo D&D (d4 a d100, ventaja/desventaja, historial)
 ├── css/style.css          → todo el diseño (colores, tipografía, layout, animaciones)
 ├── js/
@@ -41,9 +41,21 @@ El mapa de `assets/mapa-apexora.jpg` sigue siendo la ilustración original — e
 
 Para **reubicar** una nación: ajustá `--x`/`--y` (posición) y `--rx`/`--ry` (tamaño del halo, en `.map-halo`) directamente en `mapa.html`. Para **agregar** una nación nueva: sumá su `<div class="map-halo">` y su `<button class="map-marker">`, y una entrada nueva en `APEXORA_NATIONS` y `NATION_SOUNDS` dentro de `js/map.js`.
 
+## Buscador global (Ctrl+K)
+
+Cualquier página tiene un botón de búsqueda en la barra de navegación (o `Ctrl+K` / `Cmd+K` desde el teclado). Busca sobre un índice curado en `js/search-data.js` — páginas, naciones, deidades, personajes (PJ y PNJ), relatos y eventos de la cronología — y salta directo a la sección con scroll suave si ya estás en esa página, o navega a la otra página si hace falta. Para sumar una entrada nueva al buscador, agregá un objeto `{ title, category, page, anchor, sub }` a `APEXORA_SEARCH_INDEX`.
+
+## Accesibilidad y lectura
+
+- Los botones de dado y ventaja/desventaja usan `aria-pressed` para lectores de pantalla.
+- El modal de información del mapa atrapa el foco con Tab mientras está abierto, y devuelve el foco al elemento que lo abrió al cerrarse.
+- Cada relato en Historias muestra su tiempo estimado de lectura y un enlace "Siguiente" al final, para leer todo en orden sin volver al índice.
+- Los índices laterales de la portada arrancan colapsados en pantallas chicas para no alargar el scroll.
+- Hay una barra de progreso de lectura arriba de la página y un botón "volver arriba" que aparece al bajar, en todas las páginas.
+
 ## El tirador de dados
 
-`dados.html` es autocontenido: elegís tipo de dado (d4 a d100), cantidad, modificador, y ventaja/desventaja (funciona con cualquier dado, no solo el d20 — tira dos veces y toma el resultado más alto o más bajo). El dado se dibuja como un SVG y tumba con una transformación 3D en CSS (no depende de librerías externas ni de WebGL). El historial vive solo en memoria: se pierde al recargar la página, tal como está pensado para una sesión de mesa.
+`dados.html` es autocontenido: elegís tipo de dado (d4 a d100), cantidad, modificador, ventaja/desventaja (funciona con cualquier dado, no solo el d20 — tira dos veces y toma el resultado más alto o más bajo), o uno de los accesos rápidos (Ataque, Daño 1d6+3, etc.). El dado se dibuja y anima en 3D real con three.js cuando el navegador soporta WebGL (si no, cae a un modo sin visor 3D). El historial persiste en `localStorage` — sobrevive a recargar la página, y se puede vaciar con "Limpiar historial".
 
 ## Cómo agregar más lore
 

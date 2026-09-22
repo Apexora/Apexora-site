@@ -7,6 +7,265 @@
 <meta name="description" content="Apexora: un mundo nacido del impacto de un cometa. Mitología, naciones, historia y los Guardianes que lo habitan hoy.">
 <link rel="icon" href="assets/favicon.png" type="image/png">
 <link rel="stylesheet" href="css/style.css">
+<script>document.documentElement.classList.add('js');</script>
+
+<style>
+/* ==========================================================
+   Portada con índices laterales (estilo índice de libro)
+   Todo lo de esta portada vive acá, con prefijo .home-shell / .ix-
+   ========================================================== */
+
+.home-shell {
+  --nav-h: 4.25rem;
+  --ix-gold: var(--gold, #cf9d4f);
+  --ix-gold-soft: var(--gold-soft, #e8c789);
+  --ix-ink: var(--ink, #ece6d8);
+  --ix-dim: var(--ink-dim, #9d9686);
+  --ix-faint: var(--ink-faint, #6c6759);
+  --ix-line: var(--line-strong, rgba(236, 230, 216, 0.2));
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "hero" "left" "right" "main";
+  max-width: none;
+  margin: 0;
+}
+.home-shell > .hero      { grid-area: hero; min-width: 0; min-height: 0; }
+.home-shell > .ix-left   { grid-area: left; }
+.home-shell > .ix-right  { grid-area: right; }
+.home-shell > main       { grid-area: main; min-width: 0; }
+.home-shell [id]         { scroll-margin-top: calc(var(--nav-h) + 1rem); }
+
+/* ---------- El índice ---------- */
+.book-index {
+  padding: 1.4rem 1.25rem 1.75rem;
+  font-size: 0.98rem;
+  line-height: 1.35;
+  border-top: 1px solid var(--ix-line);
+}
+
+.ix-title {
+  margin: 0;
+  text-align: center;
+  text-wrap: balance;
+  font-family: var(--f-display, "Cinzel", serif);
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: var(--ix-gold);
+}
+.ix-title::after {
+  content: "";
+  display: block;
+  width: 55%;
+  height: 1px;
+  margin: 0.75rem auto 0;
+  background: linear-gradient(90deg, transparent, var(--ix-gold), transparent);
+  opacity: 0.55;
+}
+
+.ix-group { margin-top: 1.3rem; }
+.ix-group > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--f-display, "Cinzel", serif);
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  color: var(--ix-gold-soft);
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid var(--ix-line);
+}
+.ix-group > summary::-webkit-details-marker { display: none; }
+.ix-group > summary::after {
+  content: "";
+  width: 0.45rem; height: 0.45rem;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform 0.2s;
+}
+.ix-group[open] > summary::after { transform: rotate(-135deg) translateY(-2px); }
+
+.ix-list { list-style: none; margin: 0.5rem 0 0; padding: 0; }
+.ix-list li { position: relative; }
+
+/* marcapáginas: aparece al señalar una entrada */
+.ix-list li::before {
+  content: "";
+  position: absolute;
+  left: -0.7rem; top: 0.3rem; bottom: 0.3rem;
+  width: 2px;
+  background: var(--ix-gold);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.18s ease-out;
+}
+.ix-list li:hover::before,
+.ix-list li:focus-within::before { transform: scaleY(1); }
+
+.ix-list a {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  padding: 0.24rem 0;
+  color: var(--ix-ink);
+  text-decoration: none;
+}
+.ix-name { flex: 0 1 auto; }
+.ix-lead {
+  flex: 1 1 0.75rem;
+  min-width: 0.75rem;
+  border-bottom: 1px dotted var(--ix-dim);
+  opacity: 0.4;
+  transform: translateY(-0.2em);
+}
+.ix-note {
+  flex: none;
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--ix-dim);
+}
+.ix-list a:hover .ix-name,
+.ix-list a:focus-visible .ix-name { color: var(--ix-gold-soft); }
+.ix-list a:hover .ix-lead,
+.ix-list a:focus-visible .ix-lead { border-color: var(--ix-gold); opacity: 1; }
+
+/* ruta numerada (esta sí es una secuencia) */
+.ix-steps { counter-reset: ixstep; }
+.ix-steps li { counter-increment: ixstep; }
+.ix-steps a::before {
+  content: counter(ixstep) ".";
+  flex: none;
+  width: 1.15rem;
+  font-family: var(--f-display, "Cinzel", serif);
+  font-size: 0.85rem;
+  color: var(--ix-gold);
+}
+
+/* ---------- Angosto (celular): índices apilados, grupos plegables ---------- */
+@media (max-width: 1179px) {
+  /* el índice va justo debajo del hero, así que no hace falta "Descender" */
+  .home-shell > .hero { padding: 5rem 1.75rem 3.5rem; }
+  .home-shell > .hero .scroll-cue { display: none; }
+}
+
+/* Tablet: dos índices lado a lado, todo abierto */
+@media (min-width: 720px) and (max-width: 1179px) {
+  .home-shell {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas: "hero hero" "left right" "main main";
+  }
+  .home-shell > .ix-left { border-right: 1px solid var(--ix-line); }
+}
+
+/* Tablet y escritorio: los grupos no se pliegan */
+@media (min-width: 720px) {
+  .ix-group > summary { cursor: default; pointer-events: none; }
+  .ix-group > summary::after { display: none; }
+}
+
+/* ---------- Ancho: índice | portada | índice ---------- */
+@media (min-width: 1180px) {
+  .home-shell {
+    grid-template-columns: 18rem minmax(0, 1fr) 18rem;
+    grid-template-areas:
+      "left hero  right"
+      "left main  right";
+  }
+  .home-shell > .hero { min-height: calc(100vh - var(--nav-h)); }
+
+  .book-index {
+    align-self: start;
+    position: sticky;
+    top: var(--nav-h);
+    max-height: calc(100vh - var(--nav-h));
+    max-height: calc(100dvh - var(--nav-h));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    border-top: 0;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(207, 157, 79, 0.35) transparent;
+  }
+  .ix-left  { border-right: 1px solid var(--ix-line); }
+  .ix-right { border-left:  1px solid var(--ix-line); }
+  .has-fixed-nav .book-index { padding-top: calc(var(--nav-h) + 1rem); }
+
+  /* la columna central es más angosta: se reacomoda */
+  .home-shell .intro-grid { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+  .home-shell .nation-grid.cols-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1700px) {
+  .home-shell { grid-template-columns: 20rem minmax(0, 1fr) 20rem; }
+  .book-index { font-size: 1.03rem; padding-left: 1.5rem; padding-right: 1.5rem; }
+}
+
+/* Pantallas muy anchas: la columna central vuelve a tener lugar para el diseño original */
+@media (min-width: 1500px) {
+  .home-shell .intro-grid { grid-template-columns: 1.1fr 0.9fr; gap: 3rem; }
+  .home-shell .nation-grid.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+
+/* ---------- Entrada animada del índice ----------
+   Cada columna se desliza desde su borde; luego el título, los grupos y las
+   entradas aparecen en cascada: el nombre entra, la línea de puntos se traza
+   hacia la derecha y la nota se desvanece al final. En tablet y celular se
+   dispara al llegar al índice; en escritorio, apenas carga la página. */
+.js .book-index {
+  --ix-ease: cubic-bezier(0.22, 0.72, 0.2, 1);
+  --ix-from: -26px;
+}
+.js .ix-right { --ix-from: 26px; }
+
+.js .book-index .ix-title,
+.js .book-index .ix-group > summary,
+.js .book-index .ix-list li {
+  opacity: 0;
+  transform: translateX(var(--ix-from));
+  transition: opacity 0.75s var(--ix-ease), transform 0.9s var(--ix-ease);
+  transition-delay: calc(var(--ix-base, 0.2s) + var(--i, 0) * 34ms);
+}
+.js .ix-title::after {
+  transform: scaleX(0);
+  transition: transform 1s var(--ix-ease);
+  transition-delay: calc(var(--ix-base, 0.2s) + 0.25s);
+}
+.js .ix-lead {
+  transform-origin: left center;
+  transform: translateY(-0.2em) scaleX(0);
+  transition: transform 0.85s var(--ix-ease);
+  transition-delay: calc(var(--ix-base, 0.2s) + var(--i, 0) * 34ms + 0.22s);
+}
+.js .ix-note {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  transition-delay: calc(var(--ix-base, 0.2s) + var(--i, 0) * 34ms + 0.4s);
+}
+
+.js .book-index.is-in .ix-title,
+.js .book-index.is-in .ix-group > summary,
+.js .book-index.is-in .ix-list li { opacity: 1; transform: none; }
+.js .book-index.is-in .ix-title::after { transform: scaleX(1); }
+.js .book-index.is-in .ix-lead { transform: translateY(-0.2em) scaleX(1); }
+.js .book-index.is-in .ix-note { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .book-index .ix-title,
+  .js .book-index .ix-group > summary,
+  .js .book-index .ix-list li,
+  .js .ix-note { opacity: 1; transform: none; transition: none; }
+  .js .ix-title::after { transform: none; transition: none; }
+  .js .ix-lead { transform: translateY(-0.2em); transition: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ix-list li::before, .ix-group > summary::after { transition: none; }
+}
+</style>
 </head>
 <body>
 
@@ -16,6 +275,10 @@
       <img class="nav-logo-mark" src="assets/logo-96.png" alt="">
       Apexora
     </a>
+    <button class="nav-search-btn" id="search-trigger" type="button" aria-label="Buscar en Apexora (Ctrl K)">
+      <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><line x1="21" y1="21" x2="16.2" y2="16.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <span class="nav-search-kbd">Ctrl K</span>
+    </button>
     <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">&#9776;</button>
     <ul class="nav-links">
       <li><a href="index.html" class="active">Inicio</a></li>
@@ -30,91 +293,206 @@
   </div>
 </nav>
 
-<header class="hero">
-  <div class="starfield" aria-hidden="true"></div>
-  <img class="hero-emblem" src="assets/logo-360.png" alt="Emblema de Apexora">
-  <h1>Apexora</h1>
-  <p class="tagline">Crónicas del Mundo Fracturado</p>
-  <p class="lede">Un mundo nacido del impacto de un cometa, dividido entre naciones que representan visiones opuestas de la existencia — y habitado hoy por los Guardianes que intentan mantenerlo en pie.</p>
-  <div class="hero-actions">
-    <a href="mundo.html" class="btn btn-primary">Explorar el mundo</a>
-    <a href="#que-es" class="btn btn-ghost">¿Qué es Apexora?</a>
+<div class="search-overlay" id="search-overlay" hidden>
+  <div class="search-modal" role="dialog" aria-modal="true" aria-label="Buscar en Apexora">
+    <div class="search-input-row">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><line x1="21" y1="21" x2="16.2" y2="16.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <input type="text" id="search-input" placeholder="Buscar naciones, personajes, historias..." autocomplete="off" aria-label="Buscar en Apexora">
+      <kbd>Esc</kbd>
+    </div>
+    <ul class="search-results" id="search-results"></ul>
+    <p class="search-empty hint" id="search-empty" hidden>Sin resultados. Probá con otro término.</p>
   </div>
-  <a href="#que-es" class="scroll-cue">Descender</a>
-</header>
+</div>
 
-<main>
 
-<section id="que-es">
-  <div class="wrap">
-    <div class="intro-grid">
-      <div class="prose">
-        <p class="eyebrow">El mundo</p>
-        <h2>Un cataclismo hizo nacer todo lo que existe</h2>
-        <p>Todo en Apexora nace de una sola entidad imperfecta: <strong>Espacio</strong>. Solitario e inmenso, se desprendió de sí mismo para engendrar diez hijos que gobernaran el universo en su nombre — cada uno, una fuerza fundamental de la existencia.</p>
-        <p>El mundo que hoy conocemos como Apexora es, en realidad, el segundo: la civilización original fue destruida por el impacto de un cometa, un cataclismo que desató la furia latente entre dos de esos hijos — <strong>Ape</strong>, la entropía, y <strong>Xora</strong>, el orden — y que la humanidad superviviente aún interpreta como el origen de su fe.</p>
-        <p><a href="mitologia.html" class="btn btn-ghost" style="margin-top:0.5rem;">Leer la Mitología y Teogonía completa</a></p>
+<div class="home-shell">
+
+  <!-- ===== Índice izquierdo ===== -->
+  <nav class="book-index ix-left" aria-label="Índice del sitio, primera parte">
+    <h2 class="ix-title">Índice</h2>
+
+    <details class="ix-group" open>
+      <summary>Si es tu primera vez</summary>
+      <ol class="ix-list ix-steps">
+        <li><a href="#que-es"><span class="ix-name">Qué es Apexora</span><span class="ix-lead" aria-hidden="true"></span><span class="ix-note">Resumen</span></a></li>
+        <li><a href="mitologia.html"><span class="ix-name">Mitología</span><span class="ix-lead" aria-hidden="true"></span><span class="ix-note">Los dioses</span></a></li>
+        <li><a href="mundo.html"><span class="ix-name">El mundo</span><span class="ix-lead" aria-hidden="true"></span><span class="ix-note">Naciones y razas</span></a></li>
+        <li><a href="mapa.html"><span class="ix-name">Mapa</span><span class="ix-lead" aria-hidden="true"></span><span class="ix-note">Interactivo</span></a></li>
+        <li><a href="linea-tiempo.html"><span class="ix-name">Cronología</span><span class="ix-lead" aria-hidden="true"></span><span class="ix-note">Año 0 al 912</span></a></li>
+      </ol>
+    </details>
+
+    <details class="ix-group" open>
+      <summary>Naciones del oeste</summary>
+      <ul class="ix-list">
+        <li><a href="mundo.html#nacion-luminarae"><span class="ix-name">Luminarae Luxor</span><span class="ix-lead" aria-hidden="true"></span><span class="ix-note">Fe y elevación</span></a></li>
+        <li><a href="mundo.html#nacion-negatt"><span class="ix-name">Negatt</span><span class="ix-lead" aria-hidden="true"></span><span class="ix-note">La sombra sabia</span></a></li>
+        <li><a href="mundo.html#nacion-skaldrum"><span class="ix-name">Skaldrum</span><span class="ix-lead" aria-hidden="true"></span><span class="ix-note">Hierro y honor</span></a></li>
+        <li><a href="mundo.html#nacion-lumis"><span class="ix-name">Lumis</span><span class="ix-lead" aria-hidden="true"></span><span class="ix-note">Sol y cables</span></a></li>
+        <li><a href="mundo.html#nacion-boro"><span class="ix-name">Boro</span><span class="ix-lead" aria-hidden="true"></span><span class="ix-note">Refugio y Tharnok</span></a></li>
+        <li><a href="mundo.html#nacion-umbra"><span class="ix-name">Umbra</span><span class="ix-lead" aria-hidden="true"></span><span class="ix-note">El martillo</span></a></li>
+      </ul>
+    </details>
+
+    <details class="ix-group" open>
+      <summary>Naciones del este</summary>
+      <ul class="ix-list">
+        <li><a href="mundo.html#nacion-sinfalia"><span class="ix-name">Sinfalía</span><span class="ix-lead" aria-hidden="true"></span><span class="ix-note">Alegría obligada</span></a></li>
+        <li><a href="mundo.html#nacion-sylvaris"><span class="ix-name">Sylvaris</span><span class="ix-lead" aria-hidden="true"></span><span class="ix-note">Mente colmena</span></a></li>
+        <li><a href="mundo.html#nacion-krahn"><span class="ix-name">Krahn</span><span class="ix-lead" aria-hidden="true"></span><span class="ix-note">El presidio</span></a></li>
+        <li><a href="mundo.html#nacion-ostraca"><span class="ix-name">Ostraca</span><span class="ix-lead" aria-hidden="true"></span><span class="ix-note">Clones cíclicos</span></a></li>
+        <li><a href="mundo.html#nacion-psybernia"><span class="ix-name">Psybernia</span><span class="ix-lead" aria-hidden="true"></span><span class="ix-note">Bajo el silencio</span></a></li>
+        <li><a href="mundo.html#nacion-pongi"><span class="ix-name">Pongí</span><span class="ix-lead" aria-hidden="true"></span><span class="ix-note">El recreo</span></a></li>
+        <li><a href="mundo.html#nacion-disnjav"><span class="ix-name">Disnjav</span><span class="ix-lead" aria-hidden="true"></span><span class="ix-note">La tierra enferma</span></a></li>
+      </ul>
+    </details>
+  </nav>
+
+  <!-- ===== Centro: la portada de siempre ===== -->
+  <header class="hero">
+    <div class="starfield" aria-hidden="true"></div>
+    <img class="hero-emblem" src="assets/logo-360.png" alt="Emblema de Apexora">
+    <h1>Apexora</h1>
+    <p class="tagline">Crónicas del Mundo Fracturado</p>
+    <p class="lede">Un mundo nacido del impacto de un cometa, dividido entre naciones que representan visiones opuestas de la existencia — y habitado hoy por los Guardianes que intentan mantenerlo en pie.</p>
+    <div class="hero-actions">
+      <a href="mundo.html" class="btn btn-primary">Explorar el mundo</a>
+      <a href="#que-es" class="btn btn-ghost">¿Qué es Apexora?</a>
+    </div>
+    <a href="#que-es" class="scroll-cue">Descender</a>
+  </header>
+
+  <main>
+
+  <section style="padding-top:3rem;">
+    <div class="wrap">
+      <div class="panel" style="border-top:2px solid var(--gold-soft);">
+        <p class="eyebrow">Novedades</p>
+        <h2 style="margin-top:0.5rem;font-size:1.4rem;">Últimos agregados al archivo</h2>
+        <ul style="margin-top:1rem;padding-left:1.2rem;color:var(--ink-dim);line-height:1.9;">
+          <li>La <a href="personajes.html#pj" style="color:var(--gold-soft);">sección de Personajes</a> ahora está dividida en PJ y PNJ, agrupados por nación de origen.</li>
+          <li>Sumamos a <a href="personajes.html#personaje-andreas" style="color:var(--gold-soft);">Andreas Light</a> y la <a href="mundo.html#orden-ocl" style="color:var(--gold-soft);">Orden de los Caballeros de Luxor</a>.</li>
+          <li>El <a href="mapa.html" style="color:var(--gold-soft);">Mapa</a> ahora es un visor 3D interactivo, con sonido propio por nación.</li>
+          <li>Nueva herramienta: <a href="dados.html" style="color:var(--gold-soft);">Tirar Dados</a>, con tirada en 3D e historial.</li>
+        </ul>
       </div>
-      <dl class="fact-list">
-        <div>
-          <dt>Evento fundacional</dt>
-          <dd>El impacto de un cometa sobre la antigua Apexora</dd>
-        </div>
-        <div>
-          <dt>Entidad primordial</dt>
-          <dd>Espacio, padre de las diez fuerzas del cosmos</dd>
-        </div>
-        <div>
-          <dt>Conflicto central</dt>
-          <dd>Ape (entropía y oscuridad) contra Xora (orden y luz)</dd>
-        </div>
-        <div>
-          <dt>Diez hijos</dt>
-          <dd>Ape, Xora, Millot, Jilper, Cumacur, Cabala, Ganore, Kiprika, Tapiem y Dacama</dd>
-        </div>
-      </dl>
     </div>
-  </div>
-</section>
+  </section>
 
-<hr class="divider">
-
-<section>
-  <div class="wrap">
-    <div class="section-head center" style="margin-left:auto;margin-right:auto;max-width:34rem;">
-      <p class="eyebrow" style="text-align:center;">Explorá Apexora</p>
-      <h2>Cinco siglos de historia, uno frente al otro</h2>
+  <section id="que-es">
+    <div class="wrap">
+      <div class="intro-grid">
+        <div class="prose">
+          <p class="eyebrow">El mundo</p>
+          <h2>Un cataclismo hizo nacer todo lo que existe</h2>
+          <p>Todo en Apexora nace de una sola entidad imperfecta: <strong>Espacio</strong>. Solitario e inmenso, se desprendió de sí mismo para engendrar diez hijos que gobernaran el universo en su nombre — cada uno, una fuerza fundamental de la existencia.</p>
+          <p>El mundo que hoy conocemos como Apexora es, en realidad, el segundo: la civilización original fue destruida por el impacto de un cometa, un cataclismo que desató la furia latente entre dos de esos hijos — <strong>Ape</strong>, la entropía, y <strong>Xora</strong>, el orden — y que la humanidad superviviente aún interpreta como el origen de su fe.</p>
+          <p><a href="mitologia.html" class="btn btn-ghost" style="margin-top:0.5rem;">Leer la Mitología y Teogonía completa</a></p>
+        </div>
+        <dl class="fact-list">
+          <div>
+            <dt>Evento fundacional</dt>
+            <dd>El impacto de un cometa sobre la antigua Apexora</dd>
+          </div>
+          <div>
+            <dt>Entidad primordial</dt>
+            <dd>Espacio, padre de las diez fuerzas del cosmos</dd>
+          </div>
+          <div>
+            <dt>Conflicto central</dt>
+            <dd>Ape (entropía y oscuridad) contra Xora (orden y luz)</dd>
+          </div>
+          <div>
+            <dt>Diez hijos</dt>
+            <dd>Ape, Xora, Millot, Jilper, Cumacur, Cabala, Ganore, Kiprika, Tapiem y Dacama</dd>
+          </div>
+        </dl>
+      </div>
     </div>
-    <div class="nation-grid cols-3">
-      <article class="nation-card">
-        <h3><a href="mitologia.html" style="text-decoration:none;color:inherit;">Mitología</a></h3>
-        <p style="color:var(--ink-dim);margin:0;">Espacio, sus diez hijos, y la disputa entre Ape y Xora que dio forma al mundo actual.</p>
-      </article>
-      <article class="nation-card">
-        <h3><a href="mundo.html" style="text-decoration:none;color:inherit;">El Mundo</a></h3>
-        <p style="color:var(--ink-dim);margin:0;">Naciones, razas, bestias dormidas y los grandes temas que atraviesan Apexora hoy.</p>
-      </article>
-      <article class="nation-card">
-        <h3><a href="mapa.html" style="text-decoration:none;color:inherit;">Mapa</a></h3>
-        <p style="color:var(--ink-dim);margin:0;">El continente fracturado, nación por nación.</p>
-      </article>
-      <article class="nation-card umbra-accent">
-        <h3><a href="linea-tiempo.html" style="text-decoration:none;color:inherit;">Cronología</a></h3>
-        <p style="color:var(--ink-dim);margin:0;">Del Pacto Skaldrak al presente: los eventos que forjaron el mundo actual.</p>
-      </article>
-      <article class="nation-card umbra-accent">
-        <h3><a href="personajes.html" style="text-decoration:none;color:inherit;">Personajes</a></h3>
-        <p style="color:var(--ink-dim);margin:0;">Los Guardianes de Apexora, el linaje de Zarick y la familia de Markivton.</p>
-      </article>
-      <article class="nation-card umbra-accent">
-        <h3><a href="historias.html" style="text-decoration:none;color:inherit;">Historias</a></h3>
-        <p style="color:var(--ink-dim);margin:0;">Los relatos completos: cómo se conoció el grupo, y el Torneo de Umbra.</p>
-      </article>
-    </div>
-  </div>
-</section>
+  </section>
 
-</main>
+  <hr class="divider">
+
+  <section>
+    <div class="wrap">
+      <div class="section-head center" style="margin-left:auto;margin-right:auto;max-width:34rem;">
+        <p class="eyebrow" style="text-align:center;">Explorá Apexora</p>
+        <h2>Cinco siglos de historia, uno frente al otro</h2>
+      </div>
+      <div class="nation-grid cols-3">
+        <article class="nation-card">
+          <h3><a href="mitologia.html" style="text-decoration:none;color:inherit;">Mitología</a></h3>
+          <p style="color:var(--ink-dim);margin:0;">Espacio, sus diez hijos, y la disputa entre Ape y Xora que dio forma al mundo actual.</p>
+        </article>
+        <article class="nation-card">
+          <h3><a href="mundo.html" style="text-decoration:none;color:inherit;">El Mundo</a></h3>
+          <p style="color:var(--ink-dim);margin:0;">Naciones, órdenes, razas y bestias dormidas: el mundo tal como es hoy.</p>
+        </article>
+        <article class="nation-card">
+          <h3><a href="mapa.html" style="text-decoration:none;color:inherit;">Mapa</a></h3>
+          <p style="color:var(--ink-dim);margin:0;">El continente fracturado, nación por nación.</p>
+        </article>
+        <article class="nation-card umbra-accent">
+          <h3><a href="linea-tiempo.html" style="text-decoration:none;color:inherit;">Cronología</a></h3>
+          <p style="color:var(--ink-dim);margin:0;">Del Pacto Skaldrak al presente: los eventos que forjaron el mundo actual.</p>
+        </article>
+        <article class="nation-card umbra-accent">
+          <h3><a href="personajes.html" style="text-decoration:none;color:inherit;">Personajes</a></h3>
+          <p style="color:var(--ink-dim);margin:0;">Los Guardianes de Apexora, la familia de Markivton, los Ocho de Negatt y más.</p>
+        </article>
+        <article class="nation-card umbra-accent">
+          <h3><a href="historias.html" style="text-decoration:none;color:inherit;">Historias</a></h3>
+          <p style="color:var(--ink-dim);margin:0;">Los relatos completos: el linaje de Zarick, cómo se conoció el grupo y el Torneo de Umbra.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- ===== Índice derecho ===== -->
+  <nav class="book-index ix-right" aria-label="Índice del sitio, segunda parte">
+    <h2 class="ix-title">Índice, continuación</h2>
+
+    <details class="ix-group" open>
+      <summary>Más sobre Apexora</summary>
+      <ul class="ix-list">
+        <li><a href="mundo.html#ordenes"><span class="ix-name">Órdenes y facciones</span><span class="ix-lead" aria-hidden="true"></span><span class="ix-note">OCL</span></a></li>
+        <li><a href="mundo.html#bestias"><span class="ix-name">Bestias Dormidas</span><span class="ix-lead" aria-hidden="true"></span><span class="ix-note">Primordiales</span></a></li>
+        <li><a href="mundo.html#razas"><span class="ix-name">Razas del mundo</span><span class="ix-lead" aria-hidden="true"></span><span class="ix-note">6 razas</span></a></li>
+      </ul>
+    </details>
+
+    <details class="ix-group" open>
+      <summary>Personajes</summary>
+      <ul class="ix-list">
+        <li><a href="personajes.html#pj"><span class="ix-name">Personajes Jugadores</span><span class="ix-lead" aria-hidden="true"></span><span class="ix-note">14 fichas</span></a></li>
+        <li><a href="personajes.html#pnj"><span class="ix-name">Personajes No Jugadores</span><span class="ix-lead" aria-hidden="true"></span><span class="ix-note">11 fichas</span></a></li>
+      </ul>
+    </details>
+
+    <details class="ix-group" open>
+      <summary>Historias</summary>
+      <ul class="ix-list">
+        <li><a href="historias.html#campanas"><span class="ix-name">Campañas y arcos</span><span class="ix-lead" aria-hidden="true"></span><span class="ix-note">Índice</span></a></li>
+        <li><a href="historias.html#linaje-zarick"><span class="ix-name">Linaje de Zarick</span><span class="ix-lead" aria-hidden="true"></span><span class="ix-note">Relato</span></a></li>
+        <li><a href="historias.html#guardianes-1"><span class="ix-name">Campamento de Caleus</span><span class="ix-lead" aria-hidden="true"></span><span class="ix-note">Campaña 1</span></a></li>
+        <li><a href="historias.html#guardianes-2"><span class="ix-name">Orígenes</span><span class="ix-lead" aria-hidden="true"></span><span class="ix-note">Campaña 1</span></a></li>
+        <li><a href="historias.html#guardianes-3"><span class="ix-name">Torneo de Umbra</span><span class="ix-lead" aria-hidden="true"></span><span class="ix-note">Campaña 1</span></a></li>
+        <li><a href="historias.html#juicio-inasuno"><span class="ix-name">Juicio de Inasuno</span><span class="ix-lead" aria-hidden="true"></span><span class="ix-note">Campaña 2</span></a></li>
+      </ul>
+    </details>
+
+    <details class="ix-group" open>
+      <summary>En la mesa</summary>
+      <ul class="ix-list">
+        <li><a href="dados.html"><span class="ix-name">Tirar dados</span><span class="ix-lead" aria-hidden="true"></span><span class="ix-note">d4 a d100</span></a></li>
+      </ul>
+    </details>
+  </nav>
+
+</div>
 
 <footer>
   <div class="wrap footer-inner">
@@ -132,5 +510,64 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script>
+(function () {
+  var shell = document.querySelector('.home-shell');
+  if (!shell) return;
+
+  // Altura real de la barra superior (y si está fija, para no quedar tapados)
+  var topNav = document.querySelector('.nav');
+  function measureNav() {
+    if (!topNav) return;
+    shell.style.setProperty('--nav-h', topNav.offsetHeight + 'px');
+    shell.classList.toggle('has-fixed-nav', getComputedStyle(topNav).position === 'fixed');
+  }
+  measureNav();
+  window.addEventListener('resize', measureNav);
+
+  // Animación de entrada: numera los elementos de cada columna (para la cascada)
+  // y la dispara cuando el índice entra en pantalla.
+  var cols = Array.prototype.slice.call(shell.querySelectorAll('.book-index'));
+  cols.forEach(function (col, c) {
+    var n = 0;
+    col.querySelectorAll('.ix-title, .ix-group > summary, .ix-list li').forEach(function (el) {
+      el.style.setProperty('--i', n++);
+    });
+    col.style.setProperty('--ix-base', (0.3 + c * 0.14) + 's');
+  });
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    cols.forEach(function (col) { io.observe(col); });
+  } else {
+    cols.forEach(function (col) { col.classList.add('is-in'); });
+  }
+
+  // Tablet y escritorio: todos los grupos abiertos. Celular: solo el primero de cada índice.
+  var wide = window.matchMedia('(min-width: 720px)');
+  var groups = Array.prototype.slice.call(shell.querySelectorAll('.ix-group'));
+
+  function syncGroups() {
+    groups.forEach(function (g) {
+      g.open = wide.matches ? true : g === g.parentNode.querySelector('.ix-group');
+    });
+  }
+  syncGroups();
+  if (wide.addEventListener) wide.addEventListener('change', syncGroups);
+  else wide.addListener(syncGroups);
+
+  // Con espacio suficiente no se pueden plegar (ni con teclado)
+  groups.forEach(function (g) {
+    g.addEventListener('toggle', function () {
+      if (wide.matches && !g.open) g.open = true;
+    });
+  });
+})();
+</script>
+<script src="js/search-data.js"></script>
+<script src="js/search.js"></script>
 </body>
 </html>

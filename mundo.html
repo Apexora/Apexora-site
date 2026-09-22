@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>El Mundo — Apexora</title>
-<meta name="description" content="Naciones, razas y temas centrales de Apexora, el mundo fracturado por un cometa.">
+<meta name="description" content="Naciones, órdenes, razas y bestias de Apexora, el mundo fracturado por un cometa.">
 <link rel="icon" href="assets/favicon.png" type="image/png">
 <link rel="stylesheet" href="css/style.css">
 </head>
@@ -16,6 +16,10 @@
       <img class="nav-logo-mark" src="assets/logo-96.png" alt="">
       Apexora
     </a>
+    <button class="nav-search-btn" id="search-trigger" type="button" aria-label="Buscar en Apexora (Ctrl K)">
+      <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><line x1="21" y1="21" x2="16.2" y2="16.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <span class="nav-search-kbd">Ctrl K</span>
+    </button>
     <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">&#9776;</button>
     <ul class="nav-links">
       <li><a href="index.html">Inicio</a></li>
@@ -29,6 +33,19 @@
     </ul>
   </div>
 </nav>
+
+<div class="search-overlay" id="search-overlay" hidden>
+  <div class="search-modal" role="dialog" aria-modal="true" aria-label="Buscar en Apexora">
+    <div class="search-input-row">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><line x1="21" y1="21" x2="16.2" y2="16.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <input type="text" id="search-input" placeholder="Buscar naciones, personajes, historias..." autocomplete="off" aria-label="Buscar en Apexora">
+      <kbd>Esc</kbd>
+    </div>
+    <ul class="search-results" id="search-results"></ul>
+    <p class="search-empty hint" id="search-empty" hidden>Sin resultados. Probá con otro término.</p>
+  </div>
+</div>
+
 
 <header class="page-header">
   <div class="starfield" aria-hidden="true"></div>
@@ -44,10 +61,8 @@
     <nav class="toc" aria-label="Contenido de la página">
       <a href="#naciones">Naciones y Poderes</a>
       <a href="#ordenes">Órdenes y Facciones</a>
-      <a href="#lugares">Lugares de Interés</a>
       <a href="#bestias">Las Bestias Dormidas</a>
       <a href="#razas">Razas del Mundo</a>
-      <a href="#temas">Temas Clave</a>
     </nav>
   </div>
 </header>
@@ -73,6 +88,11 @@
           <dt>Ambiente</dt><dd>Aire contaminado, estructuras colapsadas, luces rotas.</dd>
           <dt>Facciones</dt><dd>Girax, Torzh, Sha'lok, Nokvar.</dd>
         </dl>
+        <div id="tharnok" style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--line);">
+          <p class="eyebrow" style="margin-bottom:0.5rem;">Lugar de interés · Tharnok</p>
+          <p style="color:var(--ink-dim);font-size:0.95rem;">Un templo en ruinas donde se han desarrollado, durante décadas, adoraciones a la diosa Xora. Un peregrino reportó recientemente que el lugar expulsó un pulso electromagnético muy potente.</p>
+          <p style="color:var(--ink-dim);font-size:0.95rem;margin-top:0.75rem;">En esta región de Apexora se cree que se contacta con la <strong>"dimensión méltida"</strong> mediante dispositivos electrónicos y ciertos métodos muy específicos. El templo es, en sí mismo, una restauración de ruinas antiguas de origen desconocido — con un puesto de turismo instalado junto a la entrada. Otra atracción común de la zona es el <strong>agua de saje</strong>, que se dice conecta más a quien la consume con la dimensión méltida.</p>
+        </div>
       </article>
 
       <article class="nation-card umbra-accent" id="nacion-umbra">
@@ -214,7 +234,7 @@
         </dl>
         <div class="prose" style="margin-top:1rem;">
           <p>Nadie entra ni sale de Psybernia sin el permiso de Valeria, y quienes lo intentan rara vez vuelven a contarlo. Se sabe poco con certeza, pero lo que trasciende sus fronteras alcanza para que el resto de Apexora prefiera no indagar: rumores de laboratorios ocultos donde se experimenta con seres vivos — humanos, bestias, y criaturas que no encajan en ninguna de las dos categorías, como ZX-51. La <a href="linea-tiempo.html#era-290" style="color:var(--gold-soft);">Gran Inmigración</a> del año 290, cuando Umbra recibió un contingente de refugiados psybernianos, sigue siendo el único gran éxodo documentado desde entonces.</p>
-          <p>Ver <a href="personajes.html#psybernia" style="color:var(--gold-soft);">El Enigma de Psybernia</a> y <a href="historias.html#vision-psybernia" style="color:var(--gold-soft);">La Visión de la Nave Psybernia</a> para lo poco que se sabe de Valeria y su dominio.</p>
+          <p>Ver <a href="personajes.html#pnj-psybernia" style="color:var(--gold-soft);">El Enigma de Psybernia</a> y <a href="historias.html#vision-psybernia" style="color:var(--gold-soft);">La Visión de la Nave Psybernia</a> para lo poco que se sabe de Valeria y su dominio.</p>
         </div>
       </article>
 
@@ -273,43 +293,13 @@
   </div>
 </section>
 
-<section id="lugares">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">01.7</p>
-      <h2>Lugares de Interés</h2>
-      <p style="margin-top:1rem;color:var(--ink-dim);">Puntos del mapa que merecen su propia ficha, más allá de las fronteras nacionales.</p>
-    </div>
-
-    <div class="panel" style="display:flex;gap:2rem;align-items:flex-start;flex-wrap:wrap;">
-      <svg viewBox="0 0 100 100" width="84" height="84" style="flex:none;" aria-hidden="true">
-        <circle cx="50" cy="50" r="46" fill="none" stroke="#cf9d4f" stroke-opacity="0.25" stroke-dasharray="2 7"/>
-        <circle cx="50" cy="50" r="30" fill="none" stroke="#e8c789" stroke-opacity="0.5"/>
-        <path d="M32 66 L50 34 L68 66 Z" fill="none" stroke="#ece6d8" stroke-width="1.5"/>
-        <line x1="38" y1="66" x2="38" y2="52" stroke="#ece6d8" stroke-width="1.2"/>
-        <line x1="50" y1="66" x2="50" y2="46" stroke="#ece6d8" stroke-width="1.2"/>
-        <line x1="62" y1="66" x2="62" y2="52" stroke="#ece6d8" stroke-width="1.2"/>
-        <circle cx="50" cy="50" r="3.5" fill="#cf9d4f"/>
-      </svg>
-      <div>
-        <p class="eyebrow">Templo en ruinas · Boro</p>
-        <h3 style="margin-top:0.3rem;">Tharnok</h3>
-        <div class="prose" style="margin-top:0.75rem;">
-          <p>En este templo se han desarrollado, durante décadas, adoraciones a la diosa Xora. Un peregrino reportó recientemente que el lugar expulsó un pulso electromagnético muy potente.</p>
-          <p>En esta región de Apexora se cree que se contacta con la <strong>"dimensión méltida"</strong> mediante dispositivos electrónicos y ciertos métodos muy específicos. El templo es, en sí mismo, una restauración de ruinas antiguas de origen desconocido — con un puesto de turismo instalado junto a la entrada. Otra atracción común de la zona es el <strong>agua de saje</strong>, que se dice conecta más a quien la consume con la dimensión méltida.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section id="bestias">
   <div class="wrap">
     <div class="panel">
       <p class="eyebrow">Entidades primordiales</p>
       <h2 style="margin-top:0.5rem;">Las Bestias Dormidas</h2>
       <p style="margin-top:1.25rem;max-width:42rem;">Son entidades primordiales enterradas desde el cataclismo. Dormidas en glaciares, volcanes o cuevas, son armas vivientes que las grandes naciones desean controlar.</p>
-      <p style="margin-top:0.75rem;max-width:42rem;color:var(--ink-dim);">En Negatt, un investigador llamado Tsuji demostró que un espíritu de bestia puede imponerse por la fuerza en un cuerpo humano — dando origen a <a href="personajes.html#ocho-negatt" style="color:var(--gold-soft);">los Ocho de Negatt</a>, sus propios hijos-experimento.</p>
+      <p style="margin-top:0.75rem;max-width:42rem;color:var(--ink-dim);">En Negatt, un investigador llamado Tsuji demostró que un espíritu de bestia puede imponerse por la fuerza en un cuerpo humano — dando origen a <a href="personajes.html#pnj-negatt" style="color:var(--gold-soft);">los Ocho de Negatt</a>, sus propios hijos-experimento.</p>
     </div>
   </div>
 </section>
@@ -327,18 +317,6 @@
       <span class="chip"><strong>Lutech</strong> — tecnología integrada</span>
       <span class="chip"><strong>Elfos Negatt</strong> — alterados por magia negra</span>
       <span class="chip"><strong>Ska'O</strong> — mezcla de orco y SkaNuj</span>
-    </div>
-  </div>
-</section>
-
-<section id="temas">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">03</p>
-      <h2>Temas Clave</h2>
-    </div>
-    <div class="prose" style="max-width:38rem;">
-      <p style="font-family:var(--f-display);font-size:1.15rem;color:var(--ink);line-height:1.6;">¿Qué es el bien en un mundo podrido?<br>¿Sobrevivir o conservar la identidad?<br>¿Tecnología: salvación o ruina?<br>¿Qué precio tiene el poder espiritual?<br>¿Y si el cataclismo fue una advertencia ignorada?</p>
     </div>
   </div>
 </section>
@@ -361,5 +339,7 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script src="js/search-data.js"></script>
+<script src="js/search.js"></script>
 </body>
 </html>

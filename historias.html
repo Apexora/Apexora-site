@@ -16,6 +16,10 @@
       <img class="nav-logo-mark" src="assets/logo-96.png" alt="">
       Apexora
     </a>
+    <button class="nav-search-btn" id="search-trigger" type="button" aria-label="Buscar en Apexora (Ctrl K)">
+      <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><line x1="21" y1="21" x2="16.2" y2="16.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <span class="nav-search-kbd">Ctrl K</span>
+    </button>
     <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">&#9776;</button>
     <ul class="nav-links">
       <li><a href="index.html">Inicio</a></li>
@@ -30,6 +34,19 @@
   </div>
 </nav>
 
+<div class="search-overlay" id="search-overlay" hidden>
+  <div class="search-modal" role="dialog" aria-modal="true" aria-label="Buscar en Apexora">
+    <div class="search-input-row">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><line x1="21" y1="21" x2="16.2" y2="16.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <input type="text" id="search-input" placeholder="Buscar naciones, personajes, historias..." autocomplete="off" aria-label="Buscar en Apexora">
+      <kbd>Esc</kbd>
+    </div>
+    <ul class="search-results" id="search-results"></ul>
+    <p class="search-empty hint" id="search-empty" hidden>Sin resultados. Probá con otro término.</p>
+  </div>
+</div>
+
+
 <header class="page-header">
   <div class="starfield" aria-hidden="true"></div>
   <div class="wrap">
@@ -38,6 +55,7 @@
     <p class="prose" style="margin-top:1.25rem;color:var(--ink-dim);font-size:1.15rem;">Los eventos que dieron origen a los Guardianes de Apexora, narrados como sucedieron.</p>
     <nav class="toc" aria-label="Contenido de la página">
       <a href="#campanas">Campañas y Arcos</a>
+      <a href="#linaje-zarick">El Linaje de Zarick</a>
       <a href="#destinos">Destinos Entrelazados</a>
       <a href="#juicio-inasuno">El Juicio de Inasuno</a>
       <a href="#guardianes-1">I — El campamento de Caleus</a>
@@ -95,11 +113,43 @@
 
 <hr class="divider">
 
+<section id="linaje-zarick">
+  <div class="wrap story-block">
+    <p class="eyebrow">Relato · Luminarae y Arboris</p>
+    <h2>El Linaje de Zarick</h2>
+    <p class="story-meta">Una historia de dos mundos que no debían encontrarse.<span class="read-time"> · ⏱ 2 min de lectura</span></p>
+
+    <h3>La soñadora de Luminarae</h3>
+    <p>Evelyn von Grace creció en la ciudad flotante de Luminarae Luxor, hija del investigador Heiss von Grace. Su salud era frágil, pero su curiosidad por el mundo de la superficie no conocía límites. Una expedición junto a su padre la puso en contacto con la cultura orca, y con el tiempo llegó a dominar su idioma.</p>
+
+    <h3>El pacto de Heiss</h3>
+    <p>Heiss era un hombre de ciencia y de magia, dedicado a descubrir el origen divino del poder. Cuando dio con la Caverna Mortuoria de Zudodh Ez, selló un pacto con la tribu que la custodiaba, un pacto que prometía elevar a Luminarae.</p>
+    <p>La Tribu Zudodh Ez vivía en armonía con la tierra. Veneraba a sus ancestros, practicaba la caza como rito sagrado y tenía en aquella caverna su corazón espiritual: el santuario de sus guerreros caídos.</p>
+
+    <h3>El guerrero de Zudodh Ez</h3>
+    <p>Entre todos ellos, ninguno era tan formidable como Khagzol "Zodd" Shazolg, portador de una espada de carnicero épica. Era un líder nato y un hombre profundamente respetuoso de la vida y de la muerte.</p>
+    <p>Su camino se cruzó con el de Evelyn en el bosque de Arboris, cuando una bestia lupina amenazó a la joven y Zodd la defendió. Ese encuentro cambiaría el destino de ambos.</p>
+
+    <h3>Un romance prohibido</h3>
+    <p>El amor entre Evelyn y Zodd floreció en secreto, desafiando las barreras que separaban a Luminarae de la tribu Zudodh Ez.</p>
+
+    <h3>La traición</h3>
+    <p>Cuando Heiss lo descubrió, su honor mancillado y su miedo a perder a su hija lo llevaron a traicionar a la tribu con la que se había aliado. Envió mercenarios contra la tribu y la Caverna Mortuoria fue destruida. Zodd cayó defendiendo su hogar, y la tribu se disolvió en la batalla que siguió.</p>
+
+    <h3>El legado de Zarick</h3>
+    <p>Evelyn, embarazada, huyó a Umbra, perseguida por la sombra de la traición de su padre. Allí nació Zarick, y su estigma de nacimiento — ni humano puro ni orco de tribu — se convirtió en el eco de la historia de sus padres.</p>
+    <p>Lo que fue de él después se cuenta en <a href="#guardianes-2" style="color:var(--gold-soft);">Orígenes</a> y en <a href="#destinos" style="color:var(--gold-soft);">Destinos Entrelazados</a>.</p>
+    <p class="next-story"><a href="#destinos">Siguiente: Destinos Entrelazados →</a></p>
+  </div>
+</section>
+
+<hr class="divider">
+
 <section id="destinos">
   <div class="wrap story-block">
     <p class="eyebrow">Relato</p>
     <h2>Destinos Entrelazados</h2>
-    <p class="story-meta">Cómo se conocieron Bane y Zarick.</p>
+    <p class="story-meta">Cómo se conocieron Bane y Zarick.<span class="read-time"> · ⏱ 6 min de lectura</span></p>
 
     <p>El día de la iniciación de Bane con los merodeadores, estos lo asignaron a un pequeño grupo para recuperar un objeto que se había perdido de una de las carabanas que negociaban entre Lumis y Umbra con energía.</p>
     <p>Sin muchos más detalles dados, las instrucciones apuntaban a que el perpetrador junto al objeto se ubicarían en la arboleda cercana, o más bien en los confines de ese territorio de Arboris. Por el camino, el grupo se conformaba de cuatro merodeadores: Urmun, siendo el encargado de supervisar a los tres iniciados Bane, Mike y Loran.</p>
@@ -119,6 +169,7 @@
     <p>Una mirada entre ambos daba a notar que no se iban a detener allí. Con su fiel sentido del olfato, Zarick guio a Bane mientras esquivaban los disparos hacia una entrada de las alcantarillas. Al entrar y cerrar el paso, ambos lograron escuchar cómo los guardias seguían hacia delante, sintiéndose un poco aliviados por haberlos perdido. Se disponen a buscar una salida, la cual, con un poco de tiempo, logran encontrar, llevándolos a las afueras de la parte norte de los alcantarillados de Lumis.</p>
     <p>Allí, al continuar un poco y casi despedirse entre sí, se encontraron con un sujeto en armadura y colores rojos, al que Bane erróneamente cree afiliado con la ciudad. Al intentar volver a correr, Zarick lo retiene: la persona frente a ellos era un umbriano, y no uno cualquiera, sino el mismísimo líder de la facción Sopharum, Caleus, un anciano imponente.</p>
     <p>Una vez Zarick hace las presentaciones, Caleus les sugiere, en tono autoritario casi como una orden, que deberían seguirlo. Sin mucha otra opción — Bane mirando a la ciudad, y Zarick mirando en dirección a la montaña cerca de Arboris — ambos deciden seguir a aquel sujeto.</p>
+    <p class="next-story"><a href="#juicio-inasuno">Siguiente: El Juicio de Inasuno →</a></p>
   </div>
 </section>
 
@@ -128,7 +179,7 @@
   <div class="wrap story-block">
     <p class="eyebrow">Relato · Sinfalía</p>
     <h2>El Juicio de Inasuno</h2>
-    <p class="story-meta">Cómo Gobz Gobinson escapó de una sentencia de espionaje — y encontró un abogado y un hogar en el mismo juicio.</p>
+    <p class="story-meta">Cómo Gobz Gobinson escapó de una sentencia de espionaje — y encontró un abogado y un hogar en el mismo juicio.<span class="read-time"> · ⏱ 2 min de lectura</span></p>
 
     <p>Gobz había cruzado el desierto hacia el este dado por muerto, con el cuerpo todavía resentido por la huida de las instalaciones de Psybernia. Lo capturó una patrulla de Krahn antes de que pudiera explicar quién era, y lo que encontraron —un goblin de apenas 1,12 metros, sostenido en pie por una armadura robótica maltrecha— no hizo más que confirmar sus sospechas. Fue extraditado a Inasuno como posible espía de la nación que lo había desechado.</p>
 
@@ -138,6 +189,7 @@
 
     <p>Fue Valmey quien lo introdujo a la cultura de Sinfalía y le recomendó viajar al volcán de Fuana, donde se convirtió en aprendiz del herrero draconiano Facó Melí durante dos años, aprendiendo vidrio, alquimia y forja. Abrió su propia tienda poco después, y se ganó un apodo que todavía lo sigue: "el pequeño genio" — o, en la lengua de Sinfalía, "U vulié guná".</p>
     <p style="color:var(--ink-dim);"><em>Once años más tarde, una carta de Valmey pidiéndole un favor en Naluvia volvería a cruzar sus caminos — esa historia todavía no se ha contado.</em></p>
+    <p class="next-story"><a href="#guardianes-1">Siguiente: I — El campamento de Caleus →</a></p>
   </div>
 </section>
 
@@ -147,6 +199,7 @@
   <div class="wrap story-block">
     <p class="eyebrow">Guardianes de Apexora</p>
     <h2>I — El campamento de Caleus</h2>
+    <p class="story-meta"><span class="read-time">⏱ 8 min de lectura</span></p>
 
     <p class="dialogue">—Dame esa maldita manzana —gritó ferozmente Zarick mientras estiraba las manos hacia Bane, y este le sostenía el rostro con su mano robótica.</p>
     <p class="dialogue">—Debes dejar para todos, verde, por favor contrólate —murmuraba el androide entre dientes mientras intentaba mantener su paciencia.</p>
@@ -217,6 +270,7 @@
     <p class="dialogue">—Qué interesante dato, Pin, no creo haberte preguntado —contestó Seah abriendo exageradamente los ojos hacia Pin, mientras este cambiaba su gesto a uno más enfadado.</p>
     <p>Mientras comenzaban a caminar observando las estructuras añejas de la ciudad, la multitud comenzó a agitarse en una feria cercana. Entre tantas personas se destacaba un gran orco gris imponente. Su extrema musculatura y su cicatriz en uno de sus ojos lo hacían un gran foco de atención. El sujeto se acercaba al grupo, el cual lo miraba con atención.</p>
     <p class="dialogue">—Ser Puj —mencionó Zarick preocupado, mientras la sombra del orco comenzaba a eclipsarlos.</p>
+    <p class="next-story"><a href="#guardianes-2">Siguiente: II — Orígenes →</a></p>
   </div>
 </section>
 
@@ -226,7 +280,7 @@
   <div class="wrap story-block">
     <p class="eyebrow">Guardianes de Apexora</p>
     <h2>II — Orígenes</h2>
-    <p class="story-meta">Cómo llegó cada uno al campamento de Caleus.</p>
+    <p class="story-meta">Cómo llegó cada uno al campamento de Caleus.<span class="read-time"> · ⏱ 6 min de lectura</span></p>
 
     <h4>Bane</h4>
     <p>Nacido en la ciudad de Liminae, el joven Bane Forrest fue bañado desde sus primeros años con la luz de las innovaciones que pasaban desde la capital a los campos cercanos. Con curiosidad incesante, logró dar con el pasado de su padre y, siguiendo parte de sus pasos, pasó la tardía parte de su infancia y la mayoría de su adolescencia instaurándose como un Recon-Mer, un merodeador de reconocimiento. Hasta que, en una de sus misiones de recolección y extracción, un accidente lo haría replantear su visión tanto psicológica como figurativamente. Tomando una decisión que lo llevó a exiliarse por sus propios valores y a despegarse de su antiguo apellido como deseo de un nuevo comienzo, terminó junto a su amigo y salvador Zarick, bajo la supervisión del viejo Caleus, pasando los últimos cuatro años de su adolescencia formándose para repagar la generosidad del calvo por acogerlo bajo su ala.</p>
@@ -255,6 +309,7 @@
     <h4>Caleus</h4>
     <p>Caleus — a quien no le agrada que lo llamen por su nombre de pila, "Mit" — nació hace cientos de años en la ciudad de Umbra, en una familia acomodada. En uno de sus viajes hacia la rural Luminarae conoció a un sujeto muy sabio con quien entabló una gran amistad, hasta que encontró una carta que revelaba que su amigo lo espiaba para otro bando. Ciego de rabia, lo golpeó hasta dejarlo inconsciente, y se juró a sí mismo destruir Luminarae.</p>
     <p>Su familia permitió que se uniera a la horda umbreana, y su liderazgo convenció al general Kru de iniciar la invasión de Luminarae. La invasión fue repelida por el primero de los héroes de Luxor: su propio ex amigo, Solaris, quien lo condenó a la inmortalidad para que recordara su error por siempre. Décadas después, tras la muerte del general Kru, Umbra se reestructuró en las facciones Accurionis, Vigorix y Sopharum — esta última, liderada por Caleus, que hizo de ella su casa, reclutando a todo guerrero de buen corazón que se cruzó en su camino. Así nació, en el año 998, el Campamento Sopharum.</p>
+    <p class="next-story"><a href="#guardianes-3">Siguiente: III — Torneo de Umbra →</a></p>
   </div>
 </section>
 
@@ -264,6 +319,7 @@
   <div class="wrap story-block">
     <p class="eyebrow">Guardianes de Apexora</p>
     <h2>III — Torneo de Umbra</h2>
+    <p class="story-meta"><span class="read-time">⏱ 5 min de lectura</span></p>
 
     <div class="bracket-note">
       <p style="margin:0;"><strong>Participantes destacados:</strong> Aurora D'arwen (hipertech de Lumis, con un traje que se transforma en toro o robot gigante), Piuk y Asan (hermanos de las tribus Skaldrak), Lurim de Skaldrum (aspirante a reina), Willow (shamán de Arboris), Krymm (nómada de apariencia moribunda con una espada larga de fuego), Solara (guerrera con exotraje de Lumis y espada eléctrica), Garvok (pirata de Markivton con pistola mosquetera y un mono al hombro), Lyra Shadowthorn (guerrera brutal de Umbra que pelea con los puños vendados), Astra Skyfall (aspirante a heroína de Luxor que genera agujeros negros y vuela), y Ova Caleus (hija de Mit Caleus, que pelea con nudillos en forma de garra y busca vengarse de su padre).</p>
@@ -288,6 +344,7 @@
     <p>Karim y Zarick habían quedado rodeados por las sombras en el centro de la arena. Karim, con el estoque en alto, se plantó frente a su compañero cuando una de las entidades se abalanzó — el semi-orco, un paso atrás, no llegó a reaccionar a tiempo. El golpe que debía haber sido para Zarick alcanzó a Karim de lleno.</p>
     <p class="dialogue">—Aquí… no acaba mi acto tan fácil —murmuró Karim con una sonrisa torcida, cayendo de rodillas mientras Zarick lo sostenía a los gritos.</p>
     <p>Poco a poco, quienes quedaban en pie —guerreros del campamento, villanos enmascarados, soldados de Umbra, curiosos del torneo— se fueron juntando en el centro de la arena, unidos por instinto de supervivencia más que por alianza. La energía que salía del portal se retorció, atravesó a Orx y a Oci como una corriente, y se perdió en el cielo con un último destello, dejando tras de sí una arena partida al medio y un silencio que nadie se atrevía a romper primero.</p>
+    <p class="next-story"><a href="#vision-psybernia">Siguiente: La Visión de la Nave Psybernia →</a></p>
   </div>
 </section>
 
@@ -297,7 +354,7 @@
   <div class="wrap story-block">
     <p class="eyebrow">Guardianes de Apexora</p>
     <h2>La Visión de la Nave Psybernia</h2>
-    <p class="story-meta">Lo que Laki vio cuando la energía del portal pasó cerca de las gradas.</p>
+    <p class="story-meta">Lo que Laki vio cuando la energía del portal pasó cerca de las gradas.<span class="read-time"> · ⏱ 2 min de lectura</span></p>
 
     <p>En medio del caos, un pulso de la energía que escapaba del portal rozó a Laki en las gradas. Para todos los que estaban a su lado, no pasó de un segundo de mirada perdida. Para él, fue mucho más.</p>
     <p>Se vio a sí mismo colgando, las muñecas atadas por encima de la cabeza, la sangre resbalando desde algún corte que no recordaba haber recibido. A su lado, en la misma posición, estaba una chica que no reconocía — su visión se quedó fija en ella un instante, antes de que una figura metálica, ZX-51, le tapara la boca para que no gritara.</p>
@@ -309,6 +366,7 @@
     <p class="dialogue">—Creíste que tu familia, tu linaje, escaparía como si nada. Por supuesto que habría consecuencias. ¿Qué haré con ustedes? Podría volarles los órganos aquí mismo y decir que los encontré así por su desobediencia. Sobre todo a vos, Laki Unmei Dust —escupió al suelo—. Cargás con generaciones de deshonra a nuestro hogar, la cúspide de la humanidad. ¿Qué tenés para decir al respecto?</p>
     <p class="dialogue">—Yo soy la soberana de aquel pequeño modelo de humanidad perfecta, la matriarca del ingenio humano, el cual Apexora resiste. Soy Valeria… te pediría que te arrodillaras, pero no podés —remató con una risa deforme.</p>
     <p>La visión se cortó de golpe cuando Robert lo sacudió del hombro, gritando su nombre por encima del ruido de la arena derrumbándose. Laki parpadeó, de vuelta en las gradas, con el nombre "Valeria" grabado en la memoria y una pregunta que no se atrevía a decir en voz alta: ¿por qué esa mujer sabía su apellido completo antes de que él mismo lo hubiera dicho jamás frente a un desconocido?</p>
+    <p class="next-story"><a href="#epilogo-torneo">Siguiente: Lo que quedó del Torneo →</a></p>
   </div>
 </section>
 
@@ -318,12 +376,13 @@
   <div class="wrap story-block">
     <p class="eyebrow">Guardianes de Apexora</p>
     <h2>Lo que quedó del Torneo</h2>
-    <p class="story-meta">Luminarae despide a sus caídos, y el grupo se reparte por Apexora.</p>
+    <p class="story-meta">Luminarae despide a sus caídos, y el grupo se reparte por Apexora.<span class="read-time"> · ⏱ 2 min de lectura</span></p>
 
     <p>Luminarae Luxor recibió los cuerpos de Karim Balteus y Astra Skyfall con los honores que rara vez se conceden a quien no nació dentro de sus torres flotantes. Se levantaron dos estatuas, una al lado de la otra, frente al templo principal: el Bailarín del Estoque congelado a mitad de un giro, y la aspirante a heroína con las manos abiertas hacia el cielo, como sosteniendo un vórtice que ya no existía.</p>
     <p>Laki, todavía con la voz de Valeria resonándole en la cabeza, se acercó al altar que Karim llevaba consigo desde hacía años — el que tenía grabados los nombres de Romaia y Calliope. Él no tenía tumba propia donde dejarle nada a sus propios padres, esos que según la visión habían huido de Psybernia generaciones atrás; nunca la había tenido. Así que dejó la carta que llevaba escrita desde antes del torneo entre las lápidas improvisadas de la familia de Karim, como si con eso alcanzara para despedirse también de la suya.</p>
     <p>El grupo no volvió completo al campamento. Zarick, Tomah y Seah decidieron no regresar a Umbra: partieron hacia Arboris para armar, junto a los sobrevivientes que quisieran sumarse, una guerrilla que plantara cara a la secta que había desatado el portal en la arena. Laki, por su parte, dejó a Robert y Martina en Markivton con la promesa de volver, y emprendió viaje hacia Psybernia junto a Zene — la chica que había visto atada a su lado en la visión, y que resultó ser muy real cuando la encontró, días después, buscando también respuestas sobre el mismo lugar.</p>
     <p style="color:var(--ink-dim);"><em>Qué encontraron Laki y Zene al llegar a Psybernia, y qué tan lejos llegó la guerrilla de Zarick en Arboris, son historias que todavía no se han contado del todo.</em></p>
+    <p class="next-story"><a href="#karim-extenso">Siguiente: Karim Balteus — crónica extendida →</a></p>
   </div>
 </section>
 
@@ -333,7 +392,7 @@
   <div class="wrap story-block">
     <p class="eyebrow">Boceto extenso</p>
     <h2>Karim Balteus — crónica extendida</h2>
-    <p class="story-meta">Una versión más detallada y anterior del origen de Karim. Algunos nombres difieren de la versión definitiva de arriba (Romaia en vez de RiaRia, y el nombre de la academia y del refugio aún sin decidir) mientras el canon termina de asentarse — se conserva tal cual para no perder el detalle de la escena.</p>
+    <p class="story-meta">Una versión más detallada y anterior del origen de Karim. Algunos nombres difieren de la versión definitiva de arriba (Romaia en vez de RiaRia, y el nombre de la academia y del refugio aún sin decidir) mientras el canon termina de asentarse — se conserva tal cual para no perder el detalle de la escena.<span class="read-time"> · ⏱ 3 min de lectura</span></p>
 
     <p>A una edad muy temprana la vida solo le dio una salida: convertirse en mercenario. Su familia ya no podía alimentar a más bocas, y la última en llegar fue la que hubo que sacrificar. Se convirtió en miembro de la academia, una facción de mercenarios caracterizada por métodos muy dispares al resto de grupos, donde el honor era inicio y final de todo. La intensidad de su entrenamiento fue mucho peor de lo que Karim llegó a pensar: por cada duelo perdido recibió una cicatriz, "…porque de cada duelo se aprende algo y por ello no debes olvidarlos".</p>
 
@@ -350,6 +409,7 @@
     <p>Cinco minutos y cuarenta y siete segundos necesitó Karim para dejar tras de sí un charco de sangre formado por 29 cadáveres. Cuando el oficial se lanzó contra él, la hoja de Karim cedió y se partió en dos; en el intercambio, Karim detuvo con su propia mano desnuda un tajo que iba dirigido a su cuello, aprovechó la sorpresa del oficial, lo desarmó y terminó el duelo a golpes hasta que sus propias manos cedieron por el dolor.</p>
 
     <p>Agotado, buscó vendas entre las pertenencias del oficial y encontró, junto a ellas, una carta destinada a anunciar su propia muerte a la academia. La tomó, se vendó las heridas, se despidió de Romaia y Calliope, y partió con un nuevo propósito: ajustar cuentas con la academia, sabiendo que él solo jamás podría contra toda la institución. Desde entonces alzó un altar en honor a su familia y encargó un nuevo estoque, ornamentado y funcional, con los nombres de Romaia y Calliope grabados a lo largo de la hoja — su nuevo mayor tesoro. Todo hasta que un tal Caleus, líder de Sopharum, lo admitió en uno de sus campamentos.</p>
+    <p class="next-story"><a href="#sombras-luz">Siguiente: Sombras del pasado, dudas en la luz →</a></p>
   </div>
 </section>
 
@@ -359,7 +419,7 @@
   <div class="wrap story-block">
     <p class="eyebrow">Relato · Orden de los Caballeros de Luxor</p>
     <h2>Sombras del pasado, dudas en la luz</h2>
-    <p class="story-meta">Cómo Andreas Light llegó a ser el segundo asiento del tercer círculo — y el precio que pagó por eso.</p>
+    <p class="story-meta">Cómo Andreas Light llegó a ser el segundo asiento del tercer círculo — y el precio que pagó por eso.<span class="read-time"> · ⏱ 2 min de lectura</span></p>
 
     <p>Un grupo de extremistas atacó una instalación de gran importancia para el Consejo. De forma urgente, este movilizó a todo el personal disponible de la orden para identificar a los culpables y llevarles la justicia radiante. Se organizó un grupo pequeño: un recluta en proceso de "ascensión", un activo experimentado llamado Mikael, Rose, y Andreas. En dos días ya habían identificado a todos los miembros del grupo terrorista a excepción del líder — en gran parte gracias a los aportes de Rose, cuyas habilidades de infiltración y recopilación de información Andreas consideraba las mejores que había visto. Aun así, algo estaba mal, y él lo sabía: el líder de los terroristas era demasiado bueno.</p>
 
@@ -395,5 +455,7 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script src="js/search-data.js"></script>
+<script src="js/search.js"></script>
 </body>
 </html>

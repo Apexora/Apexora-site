@@ -47,7 +47,7 @@ const APEXORA_NATIONS = {
     name: "Markivton",
     eyebrow: "Nación de piratas y anarquía",
     desc: "Puerto sin ley donde una herrería —'Desde el Polvo'— se convirtió en hogar para quienes no tenían ninguno.",
-    link: "personajes.html#markivton",
+    link: "personajes.html#pj-markivton",
   },
   skaldrak: {
     name: "Tribus Skaldrak",

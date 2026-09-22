@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const factsEl = document.getElementById("map-info-facts");
   const descEl = document.getElementById("map-info-desc");
   const linkEl = document.getElementById("map-info-link");
+  const panelEl = document.getElementById("map-info-panel");
+  let lastFocused = null;
 
   let engine = null;
 
@@ -40,8 +42,10 @@ document.addEventListener("DOMContentLoaded", () => {
       linkEl.style.display = "none";
     }
 
+    lastFocused = document.activeElement;
     backdrop.hidden = false;
     requestAnimationFrame(() => backdrop.classList.add("is-open"));
+    if (closeBtn) closeBtn.focus();
 
     if (window.APEXORA_SOUNDS) APEXORA_SOUNDS.play(nation.sound);
   }
@@ -50,6 +54,22 @@ document.addEventListener("DOMContentLoaded", () => {
     backdrop.classList.remove("is-open");
     window.setTimeout(() => { backdrop.hidden = true; }, 250);
     if (engine) engine.resetView();
+    if (lastFocused && typeof lastFocused.focus === "function") lastFocused.focus();
+  }
+
+  function trapFocus(e) {
+    if (e.key !== "Tab" || backdrop.hidden) return;
+    const focusable = panelEl.querySelectorAll('button, a[href], [tabindex]:not([tabindex="-1"])');
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
   }
 
   if (closeBtn) closeBtn.addEventListener("click", closePanel);
@@ -61,6 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && backdrop && !backdrop.hidden) closePanel();
   });
+  document.addEventListener("keydown", trapFocus);
 
   if (typeof THREE === "undefined" || typeof APEXORA_MAP3D === "undefined" || typeof APEXORA_NATIONS === "undefined") {
     viewport.classList.add("no-webgl");

@@ -26,6 +26,33 @@ document.addEventListener("DOMContentLoaded", () => {
   let viewport = null;
   let rolling = false;
 
+  const HISTORY_KEY = "apexora-dice-history";
+  let historyData = [];
+  try {
+    const saved = JSON.parse(localStorage.getItem(HISTORY_KEY) || "[]");
+    if (Array.isArray(saved)) historyData = saved.slice(0, 20);
+  } catch (e) {
+    historyData = [];
+  }
+
+  function saveHistory() {
+    try {
+      localStorage.setItem(HISTORY_KEY, JSON.stringify(historyData));
+    } catch (e) {
+      /* localStorage puede fallar en modo privado; el historial sigue funcionando en memoria */
+    }
+  }
+
+  function renderHistory() {
+    if (!historyData.length) {
+      historyList.innerHTML = '<li class="hint" style="border:none;">Todavía no tiraste ningún dado.</li>';
+      return;
+    }
+    historyList.innerHTML = historyData
+      .map((h) => `<li><span>${h.label}</span><span class="rh-total">${h.total}</span></li>`)
+      .join("");
+  }
+
   if (viewportEl && typeof THREE !== "undefined" && typeof APEXORA_DICE !== "undefined") {
     viewport = APEXORA_DICE.createViewport(viewportEl);
     if (viewport && viewport.ready) {
@@ -58,9 +85,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function setDie(die) {
     state.die = die;
-    dieButtons.forEach((b) =>
-      b.classList.toggle("active", Number(b.dataset.die) === die)
-    );
+    dieButtons.forEach((b) => {
+      const isActive = Number(b.dataset.die) === die;
+      b.classList.toggle("active", isActive);
+      b.setAttribute("aria-pressed", isActive ? "true" : "false");
+    });
     updateViewportForCurrentState();
   }
 
@@ -82,16 +111,21 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   advButtons.forEach((btn) => {
+    btn.setAttribute("aria-pressed", "false");
     btn.addEventListener("click", () => {
       if (rolling) return;
       const mode = btn.dataset.mode;
       if (state.mode === mode) {
         state.mode = null;
-        advButtons.forEach((b) => b.classList.remove("active"));
+        advButtons.forEach((b) => { b.classList.remove("active"); b.setAttribute("aria-pressed", "false"); });
         if (qtyInput) qtyInput.disabled = false;
       } else {
         state.mode = mode;
-        advButtons.forEach((b) => b.classList.toggle("active", b.dataset.mode === mode));
+        advButtons.forEach((b) => {
+          const isActive = b.dataset.mode === mode;
+          b.classList.toggle("active", isActive);
+          b.setAttribute("aria-pressed", isActive ? "true" : "false");
+        });
         qtyInput.value = 1;
         if (qtyInput) qtyInput.disabled = true;
       }
@@ -178,18 +212,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function addHistoryEntry(roll) {
-    const emptyMsg = historyList.querySelector(".hint");
-    if (emptyMsg) emptyMsg.remove();
-
-    const li = document.createElement("li");
     const modText = roll.mod ? (roll.mod > 0 ? ` + ${roll.mod}` : ` − ${Math.abs(roll.mod)}`) : "";
-    li.innerHTML =
-      `<span>${roll.historyLabel}${modText}</span><span class="rh-total">${roll.total}</span>`;
-    historyList.prepend(li);
-
-    while (historyList.children.length > 20) {
-      historyList.removeChild(historyList.lastChild);
-    }
+    historyData.unshift({ label: `${roll.historyLabel}${modText}`, total: roll.total, rolls: roll.rolls.join(", ") });
+    historyData = historyData.slice(0, 20);
+    saveHistory();
+    renderHistory();
   }
 
   async function doRoll() {
@@ -224,10 +251,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (clearBtn) {
     clearBtn.addEventListener("click", () => {
-      historyList.innerHTML =
-        '<li class="hint" style="border:none;">Todavía no tiraste ningún dado.</li>';
+      historyData = [];
+      saveHistory();
+      renderHistory();
     });
   }
 
+  // Accesos rápidos de tirada
+  const PRESETS = {
+    attack: { die: 20, qty: 1, mod: null }, // conserva el modificador que ya haya cargado
+    "dmg-1d6-3": { die: 6, qty: 1, mod: 3 },
+    "dmg-2d6": { die: 6, qty: 2, mod: 0 },
+    "dmg-1d8-2": { die: 8, qty: 1, mod: 2 },
+    save: { die: 20, qty: 1, mod: null },
+  };
+
+  document.querySelectorAll(".preset-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      if (rolling) return;
+      const preset = PRESETS[btn.dataset.preset];
+      if (!preset) return;
+      if (state.mode) {
+        state.mode = null;
+        advButtons.forEach((b) => { b.classList.remove("active"); b.setAttribute("aria-pressed", "false"); });
+        qtyInput.disabled = false;
+      }
+      setDie(preset.die);
+      qtyInput.value = preset.qty;
+      if (preset.mod !== null) modInput.value = preset.mod;
+      updateViewportForCurrentState();
+      doRoll();
+    });
+  });
+
+  renderHistory();
   setDie(20);
 });

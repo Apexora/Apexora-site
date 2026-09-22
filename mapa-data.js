@@ -59,7 +59,7 @@ const APEXORA_NATIONS = [
     x: 31.0, y: 72.8, color: "#3f9c92",
     facts: [],
     desc: "Hogar de la familia Dust-Clement — sin ley formal, pero con su propio código.",
-    link: "personajes.html#pj-markivton", sound: "markivton",
+    link: "personajes.html#markivton", sound: "markivton",
   },
   {
     id: "umbra", name: "Umbra", tagline: "El Imperio del Martillo",
