@@ -11,7 +11,7 @@ const APEXORA_SEARCH_INDEX = [
   { title: "Mitología y Teogonía", category: "Página", page: "mitologia.html", anchor: "", sub: "Espacio y sus diez hijos" },
   { title: "El Mundo", category: "Página", page: "mundo.html", anchor: "", sub: "Naciones, órdenes, razas y temas" },
   { title: "Mapa de Apexora", category: "Página", page: "mapa.html", anchor: "", sub: "Mapa interactivo del continente" },
-  { title: "Línea de Tiempo", category: "Página", page: "linea-tiempo.html", anchor: "", sub: "Eventos clave, año 0 al 912" },
+  { title: "Línea de Tiempo", category: "Página", page: "linea-tiempo.html", anchor: "", sub: "Eventos clave, año 0 al 1012" },
   { title: "Personajes", category: "Página", page: "personajes.html", anchor: "", sub: "PJ y PNJ por nación" },
   { title: "Historias", category: "Página", page: "historias.html", anchor: "", sub: "Relatos y campañas" },
   { title: "Tirar Dados", category: "Página", page: "dados.html", anchor: "", sub: "Tirador de dados estilo D&D" },
@@ -47,6 +47,15 @@ const APEXORA_SEARCH_INDEX = [
   { title: "La Orden de los Caballeros de Luxor", category: "Facción", page: "mundo.html", anchor: "orden-ocl", sub: "OCL — Operación Negro" },
   { title: "Las Bestias Dormidas", category: "Tema", page: "mundo.html", anchor: "bestias", sub: "Entidades primordiales" },
   { title: "Razas del Mundo", category: "Tema", page: "mundo.html", anchor: "razas", sub: "Humanos, SkaNuj, orcos y más" },
+  { title: "Arboris", category: "Nación", page: "mundo.html", anchor: "nacion-arboris", sub: "El Bosque" },
+  { title: "Tribus Skaldrak", category: "Nación", page: "mundo.html", anchor: "nacion-skaldrak", sub: "Por explorar" },
+  { title: "Markivton", category: "Nación", page: "mundo.html", anchor: "nacion-markivton", sub: "Nación de piratas y anarquía" },
+  { title: "Facciones de Boro", category: "Facción", page: "mundo.html", anchor: "boro-facciones", sub: "Girax, Torzh, Sha'lok y Nokvar" },
+  { title: "Orígenes de Sinfalía", category: "Tema", page: "mundo.html", anchor: "sinfalia-origenes", sub: "La ostra de la paz, Consejo de los Jóvenes, Vizlum" },
+  { title: "Facciones de Sinfalía", category: "Facción", page: "mundo.html", anchor: "sinfalia-facciones", sub: "Moradores, Sobrios y Ganoristas" },
+  { title: "Magia y Tecnología", category: "Tema", page: "mundo.html", anchor: "poderes", sub: "Magia natural, oscura, divina y tecnología" },
+  { title: "INARGO y los Lutech", category: "Tema", page: "mundo.html", anchor: "inargo", sub: "Inteligencia artificial y humanos modificados" },
+  { title: "Chunchunmaru", category: "Tema", page: "mundo.html", anchor: "chunchunmaru", sub: "Misterio abierto — androide que crece" },
 
   // --- Personajes Jugadores ---
   { title: "Zarick", category: "Personaje (PJ)", page: "personajes.html", anchor: "personaje-zarick", sub: "Umbra — Hijo de la Sombra" },
@@ -74,13 +83,19 @@ const APEXORA_SEARCH_INDEX = [
   { title: "ZX-51", category: "Personaje (PNJ)", page: "personajes.html", anchor: "personaje-zx51", sub: "Psybernia" },
   { title: "Los Ocho de Negatt", category: "Personaje (PNJ)", page: "personajes.html", anchor: "pnj-negatt", sub: "Alnasi, Azalange, Aldebaran, Fudo, Themis, Niro, Daisuke" },
   { title: "Fragua", category: "Personaje (PNJ)", page: "personajes.html", anchor: "personaje-fragua", sub: "El transportista" },
+  { title: "Puj", category: "Personaje (PNJ)", page: "personajes.html", anchor: "personaje-puj", sub: "Umbra — dictador" },
+  { title: "Malakar", category: "Personaje (PNJ)", page: "personajes.html", anchor: "personaje-malakar", sub: "Umbra — antiguo comandante" },
+  { title: "Oci", category: "Personaje (PNJ)", page: "personajes.html", anchor: "personaje-oci", sub: "Skaldrum — el inmortal" },
+  { title: "Salín", category: "Personaje (PNJ)", page: "personajes.html", anchor: "personaje-salin", sub: "Sinfalía — juez de Inasuno" },
+  { title: "Visú", category: "Personaje (PNJ)", page: "personajes.html", anchor: "personaje-visu", sub: "Sinfalía — asistente de Valmey" },
+  { title: "Chunchunmaru", category: "Personaje (PNJ)", page: "personajes.html", anchor: "personaje-chunchunmaru", sub: "El androide que crece" },
 
   // --- Linaje de Zarick (en Historias) ---
   { title: "El Linaje de Zarick", category: "Historia", page: "historias.html", anchor: "linaje-zarick", sub: "Evelyn, Zodd, Heiss y la tribu Zudodh Ez" },
 
   // --- Historias / Relatos ---
   { title: "Destinos Entrelazados", category: "Historia", page: "historias.html", anchor: "destinos", sub: "Cómo se conocieron Bane y Zarick" },
-  { title: "El Juicio de Inasuno", category: "Historia", page: "historias.html", anchor: "juicio-inasuno", sub: "Gobz, Valmey y el nuevo régimen de Sinfalía" },
+  { title: "El Juicio de Inasuno", category: "Historia", page: "historias.html", anchor: "juicio-inasuno", sub: "Lael, Gobz, Valmey y el nuevo régimen de Sinfalía" },
   { title: "I — El campamento de Caleus", category: "Historia", page: "historias.html", anchor: "guardianes-1", sub: "Guardianes de Apexora" },
   { title: "II — Orígenes", category: "Historia", page: "historias.html", anchor: "guardianes-2", sub: "Guardianes de Apexora" },
   { title: "III — Torneo de Umbra", category: "Historia", page: "historias.html", anchor: "guardianes-3", sub: "Guardianes de Apexora" },
@@ -89,13 +104,16 @@ const APEXORA_SEARCH_INDEX = [
   { title: "Karim Balteus — crónica extendida", category: "Historia", page: "historias.html", anchor: "karim-extenso", sub: "Boceto extenso" },
   { title: "Sombras del pasado, dudas en la luz", category: "Historia", page: "historias.html", anchor: "sombras-luz", sub: "Andreas Light y Rose" },
   { title: "Campañas y Arcos", category: "Historia", page: "historias.html", anchor: "campanas", sub: "Índice de campañas: Guardianes de Apexora y Sinfalía" },
+  { title: "Campamento Sopharum", category: "Historia", page: "historias.html", anchor: "campamento-sopharum", sub: "Obra escrita — \"Campamento, familia\"" },
+  { title: "Torneo de los Dos Emperadores", category: "Historia", page: "historias.html", anchor: "torneo-emperadores", sub: "Torneo Skaldrak Vlarim (TSV) — final de la campaña" },
 
   // --- Cronología ---
   { title: "Pacto Skaldrak", category: "Evento", page: "linea-tiempo.html", anchor: "era-0", sub: "Año 0" },
   { title: "Gran Inmigración", category: "Evento", page: "linea-tiempo.html", anchor: "era-290", sub: "Año 290" },
   { title: "Surgir de Negatt", category: "Evento", page: "linea-tiempo.html", anchor: "era-547", sub: "Año 547" },
   { title: "Erupción del Volcán Skaldrak", category: "Evento", page: "linea-tiempo.html", anchor: "era-860", sub: "Año 860" },
-  { title: "Apexora hoy", category: "Evento", page: "linea-tiempo.html", anchor: "era-912", sub: "Año 912 — Presente" },
+  { title: "Torneo de Umbra", category: "Evento", page: "linea-tiempo.html", anchor: "era-1011", sub: "Año 1011" },
+  { title: "Apexora hoy", category: "Evento", page: "linea-tiempo.html", anchor: "era-1012", sub: "Año 1012 — Presente" },
   { title: "La invasión de Vasané-Nalú", category: "Evento", page: "linea-tiempo.html", anchor: "era-vasane-nalu", sub: "Tribu Zzamua toma Sinfalía" },
 
   // --- Antes de Apexora ---
